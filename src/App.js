@@ -16,7 +16,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar sticky="top" bg="dark" variant="dark">
-            <Navbar.Brand href="home"><img src="/horse.jpg" width="70"></img></Navbar.Brand>
+            <Navbar.Brand href="/"><img src="/horse.jpg" width="70"></img></Navbar.Brand>
             <Nav className="ml-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <NavDropdown title="Listings" id="listing-dropdown">
@@ -31,15 +31,14 @@ class App extends Component {
 
           {/* Tab on the navbar are routed to different components using Switch eg. Home tab on the navbar is showing the Content component */}
           <Routes>
-            <Route path='/' component={Home} exact />
-            <Route path='/categories' component={Categories} />
-            <Route path='/createAd' component={CreateAd} />
-            <Route path='/aboutUs' component={AboutUs} />
-            <Route path='/loginRegister' component={LoginRegister} />
+            <Route path='/' element={<Home />} exact />
+            <Route path='/categories' element={<Categories />} />
+            <Route path='/createAd' element={<CreateAd />} />
+            <Route path='/aboutUs' element={<AboutUs />} />
+            <Route path='/loginRegister' element={<LoginRegister />} />
             {/* Setting up the edit route with id parameter which was changed using button in app.js and Link tag */}
             {/* <Route path='/edit/:id' component={Edit} /> */}
           </Routes>
-
         </div>
       </Router>
     );
