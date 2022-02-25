@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.carousel-caption {
+  background-color: rgba(0,0,0,0.4) !important;
+}
+
+.carousel-pic {
+  max-height: 700px;
+}
