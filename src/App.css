@@ -44,3 +44,12 @@
 .carousel-pic {
   max-height: 700px;
 }
+
+.login-container {
+  margin: 2%;
+  text-align: justify !important;
+}
+
+.form-group {
+  margin: 10px;
+}
