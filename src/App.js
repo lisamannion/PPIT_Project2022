@@ -8,6 +8,9 @@ import { LoginRegister } from './components/loginRegister'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React from 'react'
+import { MDBFooter } from 'mdb-react-ui-kit'
+import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 
 // App's class itself
 class App extends Component {
@@ -39,6 +42,17 @@ class App extends Component {
             {/* Setting up the edit route with id parameter which was changed using button in app.js and Link tag */}
             {/* <Route path='/edit/:id' component={Edit} /> */}
           </Routes>
+        </div>
+
+        {/* Footer */}
+        <div> 
+        <MDBFooter className='text-center text-white' style={{ backgroundColor: '#21081a' }}>
+            <div className='container p-4'></div>
+
+            <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+              © 2022 Copyright:<a className='text-white' href='https://mdbootstrap.com/'>MDBootstrap.com</a>
+            </div>
+          </MDBFooter>
         </div>
       </Router>
     );
