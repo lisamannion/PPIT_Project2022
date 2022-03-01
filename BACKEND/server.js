@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express()
 
-// Changed port from 3000 to 2000 so that its not running on the same port as the app
+// Changed port from 3000 to 4000 so that its not running on the same port as the app
 const port = 4000
+
+// Set EJS as templating engine
+app.set('view engine', 'ejs');
 
 // Including body parser (Middleware)
 const bodyParser = require('body-parser')
