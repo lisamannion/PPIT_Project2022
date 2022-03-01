@@ -37,9 +37,19 @@ app.use('/static', express.static(path.join(__dirname, 'build//static')))
 const mongoose = require('mongoose')
 
 // Set up connection string for database
-const mongoConnection = 'mongodb+srv://admin:0000@cluster0.cbk0q.mongodb.net/stallion?retryWrites=true&w=majority'
+const mongoConnection = 'mongodb+srv://ppit:gabriellisa@cluster0.wa6ae.mongodb.net/ppit?retryWrites=true&w=majority'
 mongoose.connect(mongoConnection, { useNewUrlParser: true })
 
+// schema for database
+const Schema = mongoose.Schema;
+
+var loginRegSchema = new Schema({
+    name: String,
+    password: String,
+});
+
+// create model for database for interaction
+var LoginRegModel = mongoose.model("loginReg", loginRegSchema)
 
 // Server app listening on port 4000
 app.listen(port, () => {

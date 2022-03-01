@@ -10,7 +10,7 @@ export class Home extends React.Component {
                     <Carousel.Caption>
                     <h3>Horse Category</h3>
                     <p>To be edited</p>
-                    <p><a class="btn btn-large btn-outline-light" href="#">Browse by Category</a></p>
+                    <p><a className="btn btn-large btn-outline-light" href="#">Browse by Category</a></p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -18,7 +18,7 @@ export class Home extends React.Component {
                     <Carousel.Caption>
                     <h3>Horse Discipline</h3>
                     <p>To be edited</p>
-                    <p><a class="btn btn-large btn-outline-light" href="#">Browse by Discipline</a></p>
+                    <p><a className="btn btn-large btn-outline-light" href="#">Browse by Discipline</a></p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -26,7 +26,7 @@ export class Home extends React.Component {
                     <Carousel.Caption>
                     <h3>Horse Size</h3>
                     <p>To be edited</p>
-                    <p><a class="btn btn-large btn-outline-light" href="#">Browse by Size</a></p>
+                    <p><a className="btn btn-large btn-outline-light" href="#">Browse by Size</a></p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
