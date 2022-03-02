@@ -44,12 +44,30 @@ mongoose.connect(mongoConnection, { useNewUrlParser: true })
 const Schema = mongoose.Schema;
 
 var loginRegSchema = new Schema({
-    name: String,
-    password: String,
+    firstName: String,
+    surname: String,
+    email: String,
+    password: String
 });
 
 // create model for database for interaction
-var LoginRegModel = mongoose.model("loginReg", loginRegSchema)
+var LoginRegModel = mongoose.model("users", loginRegSchema)
+
+// post request to create new user
+app.post('/loginRegister', (req, res) => {
+
+    // interact to create
+    LoginRegModel.create({
+        firstName: req.body.firstName,
+        surname: req.body.surname,
+        email: req.body.email,
+        password: req.body.password
+    })
+
+    // server to client to prevent duplicate creation
+    res.send('User Added');
+})
+
 
 // Server app listening on port 4000
 app.listen(port, () => {
