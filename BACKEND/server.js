@@ -54,20 +54,47 @@ var loginRegSchema = new Schema({
 var LoginRegModel = mongoose.model("users", loginRegSchema)
 
 // post request to create new user
-app.post('/loginRegister', (req, res) => {
+app.post('/register', (req, res) => {
 
-    // interact to create
-    LoginRegModel.create({
-        firstName: req.body.firstName,
-        surname: req.body.surname,
-        email: req.body.email,
-        password: req.body.password
+    LoginRegModel.findOne({email:req.body.email}, (err, data) => {
+        if(data){
+            res.send("User already exist");
+            console.log("User exist");
+        } else {
+            // interact to create
+            LoginRegModel.create({
+                firstName: req.body.firstName,
+                surname: req.body.surname,
+                email: req.body.email,
+                password: req.body.password
+            })
+
+            // server to client to prevent duplicate creation
+            res.send('User Added');
+            console.log('Create successful');
+        }
     })
-
-    // server to client to prevent duplicate creation
-    res.send('User Added');
 })
 
+// post request to login
+app.post('/login', (req, res) => {
+
+    LoginRegModel.findOne({email:req.body.logEmail}, (err, data) => {
+        if(data){
+            if(req.body.logPassword === data.password) {
+                res.send({message: "Login success"});
+                console.log("Successful login");
+            } else {
+                res.send({message:"Wrong credentials"});
+                console.log("Unsucessful login");
+            }
+        } else {
+            // server to client to prevent duplicate creation
+            res.send('Not registered');
+            console.log("Unregistered");
+        }
+    })
+})
 
 // Server app listening on port 4000
 app.listen(port, () => {

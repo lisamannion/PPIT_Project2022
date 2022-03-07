@@ -6,17 +6,45 @@ export class LoginRegister extends React.Component {
     constructor() {
         super();
         // bind
+        this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+        this.onChangeLogEmail = this.onChangeLogEmail.bind(this);
+        this.onChangeLogPassword = this.onChangeLogPassword.bind(this);
         this.handleRegSubmit = this.handleRegSubmit.bind(this);
         this.onChangeFirstName = this.onChangeFirstName.bind(this);
         this.onChangeSurname = this.onChangeSurname.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.state = {
+            logEmail: '',
+            logPassword: '',
             firstName: '',
             surname: '',
             email: '',
             password: ''
         }
+    }
+
+    handleLoginSubmit(event) {
+        alert("Email: " + this.state.logEmail + "\nPassword: " + this.state.logPassword);
+        event.preventDefault(); // prevent crashing
+
+        // create newUser object
+        const user = {
+            logEmail: this.state.logEmail,
+            logPassword: this.state.logPassword
+        }
+        axios.post('http://localhost:4000/login', user) // send newUser object to server
+            .then((res) => {
+                console.log(res); // response to console
+            })
+            .catch((err) => {
+                console.log(err); // error to console
+            });
+        // set state to empty for another user
+        this.setState ({
+            logEmail: '',
+            logPassword: ''
+        })
     }
 
     handleRegSubmit(event) {
@@ -30,7 +58,7 @@ export class LoginRegister extends React.Component {
             email: this.state.email,
             password: this.state.password
         }
-        axios.post('http://localhost:4000/loginRegister', newUser) // send newUser object to server
+        axios.post('http://localhost:4000/register', newUser) // send newUser object to server
             .then((res) => {
                 console.log(res); // response to console
             })
@@ -43,6 +71,20 @@ export class LoginRegister extends React.Component {
             surname: '',
             email: '',
             password: ''
+        })
+    }
+
+    // will change logEmail value in state when input changed
+    onChangeLogEmail(event) {
+        this.setState({
+            logEmail: event.target.value
+        })
+    }
+
+    // will set logPassword value in state when input changed
+    onChangeLogPassword(event) {
+        this.setState({
+            logPassword: event.target.value
         })
     }
 
@@ -80,17 +122,30 @@ export class LoginRegister extends React.Component {
                 <Row>
                     <Col>
                         <div>
-                            <form>
+                            {/* create login form */}
+                            <form onSubmit={this.handleLoginSubmit}>
                                 <h3>Login</h3>
 
+                                {/* input login email */}
                                 <div className="form-group">
                                     <label>Email</label>
-                                    <input type="email" className="form-control" placeholder="Enter email" />
+                                    <input type="email"
+                                    className="form-control" 
+                                    placeholder="Enter email"
+                                    value={this.state.logEmail} 
+                                    onChange={this.onChangeLogEmail}
+                                    />
                                 </div>
 
+                                {/* input login password */}
                                 <div className="form-group">
                                     <label>Password</label>
-                                    <input type="password" className="form-control" placeholder="Enter password" />
+                                    <input type="password" 
+                                    className="form-control" 
+                                    placeholder="Enter password"
+                                    value={this.state.logPassword}
+                                    onChange={this.onChangeLogPassword} 
+                                    />
                                 </div>
 
                                 <button type="submit" className="btn btn-dark btn-lg btn-block">Sign in</button>
