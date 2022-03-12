@@ -33,15 +33,16 @@ export class LoginRegister extends React.Component {
             logEmail: this.state.logEmail,
             logPassword: this.state.logPassword
         }
-        axios.post('http://localhost:4000/login', user) // send newUser object to server
+        axios.post('http://localhost:4000/login', user) // send user object to server
             .then((res) => {
+
                 console.log(res); // response to console
             })
             .catch((err) => {
                 console.log(err); // error to console
             });
         // set state to empty for another user
-        this.setState ({
+        this.setState({
             logEmail: '',
             logPassword: ''
         })
@@ -66,7 +67,7 @@ export class LoginRegister extends React.Component {
                 console.log(err); // error to console
             });
         // set state to empty for another user
-        this.setState ({
+        this.setState({
             firstName: '',
             surname: '',
             email: '',
@@ -115,7 +116,7 @@ export class LoginRegister extends React.Component {
             password: event.target.value
         })
     }
-    
+
     render() {
         return (
             <Container className='login-container'>
@@ -130,21 +131,21 @@ export class LoginRegister extends React.Component {
                                 <div className="form-group">
                                     <label>Email</label>
                                     <input type="email"
-                                    className="form-control" 
-                                    placeholder="Enter email"
-                                    value={this.state.logEmail} 
-                                    onChange={this.onChangeLogEmail}
+                                        className="form-control"
+                                        placeholder="Enter email"
+                                        value={this.state.logEmail}
+                                        onChange={this.onChangeLogEmail}
                                     />
                                 </div>
 
                                 {/* input login password */}
                                 <div className="form-group">
                                     <label>Password</label>
-                                    <input type="password" 
-                                    className="form-control" 
-                                    placeholder="Enter password"
-                                    value={this.state.logPassword}
-                                    onChange={this.onChangeLogPassword} 
+                                    <input type="password"
+                                        className="form-control"
+                                        placeholder="Enter password"
+                                        value={this.state.logPassword}
+                                        onChange={this.onChangeLogPassword}
                                     />
                                 </div>
 
@@ -153,51 +154,51 @@ export class LoginRegister extends React.Component {
                         </div>
                     </Col>
                     <Col>
-                         {/* create register form */}
+                        {/* create register form */}
                         <form onSubmit={this.handleRegSubmit}>
                             <h3>Register</h3>
 
                             {/* input first name */}
                             <div className="form-group">
                                 <label>First name</label>
-                                <input type="text" 
-                                className="form-control" 
-                                placeholder="First name" 
-                                value={this.state.firstName}
-                                onChange={this.onChangeFirstName}
+                                <input type="text"
+                                    className="form-control"
+                                    placeholder="First name"
+                                    value={this.state.firstName}
+                                    onChange={this.onChangeFirstName}
                                 />
                             </div>
 
                             {/* input surname */}
                             <div className="form-group">
                                 <label>Surname</label>
-                                <input type="text" 
-                                className="form-control" 
-                                placeholder="Last name"
-                                value={this.state.surname}
-                                onChange={this.onChangeSurname} 
+                                <input type="text"
+                                    className="form-control"
+                                    placeholder="Last name"
+                                    value={this.state.surname}
+                                    onChange={this.onChangeSurname}
                                 />
                             </div>
 
                             {/* input email */}
                             <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" 
-                                className="form-control" 
-                                placeholder="Enter email" 
-                                value={this.state.email}
-                                onChange={this.onChangeEmail}
+                                <input type="email"
+                                    className="form-control"
+                                    placeholder="Enter email"
+                                    value={this.state.email}
+                                    onChange={this.onChangeEmail}
                                 />
                             </div>
 
                             {/* input password */}
                             <div className="form-group">
                                 <label>Password</label>
-                                <input type="password" 
-                                className="form-control" 
-                                placeholder="Enter password" 
-                                value={this.state.password}
-                                onChange={this.onChangePassword}
+                                <input type="password"
+                                    className="form-control"
+                                    placeholder="Enter password"
+                                    value={this.state.password}
+                                    onChange={this.onChangePassword}
                                 />
                             </div>
 

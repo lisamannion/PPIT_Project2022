@@ -34,19 +34,19 @@ class App extends Component {
 
           {/* Tab on the navbar are routed to different components using Switch eg. Home tab on the navbar is showing the Content component */}
           <Routes>
-            <Route path='/' element={<Home />} exact />
-            <Route path='/categories' element={<Categories />} />
-            <Route path='/createAd' element={<CreateAd />} />
-            <Route path='/aboutUs' element={<AboutUs />} />
-            <Route path='/loginRegister' element={<LoginRegister />} />
+            <Route path='/' element={< Home />} exact />
+            <Route path='/categories' element={< Categories />} />
+            <Route path='/createAd' element={< CreateAd />} />
+            <Route path='/aboutUs' element={< AboutUs />} />
+            <Route path='/loginRegister' element={< LoginRegister />} />
             {/* Setting up the edit route with id parameter which was changed using button in app.js and Link tag */}
             {/* <Route path='/edit/:id' component={Edit} /> */}
           </Routes>
         </div>
 
         {/* Footer */}
-        <div> 
-        <MDBFooter className='text-center text-white' style={{ backgroundColor: '#21081a' }}>
+        <div>
+          <MDBFooter className='text-center text-white' style={{ backgroundColor: '#21081a' }}>
             <div className='container p-4'></div>
 
             <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>

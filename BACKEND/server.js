@@ -1,3 +1,4 @@
+const { generateToken } = require('../BACKEND/generateToken')
 const express = require('express')
 const app = express()
 
@@ -56,8 +57,8 @@ var LoginRegModel = mongoose.model("users", loginRegSchema)
 // post request to create new user
 app.post('/register', (req, res) => {
 
-    LoginRegModel.findOne({email:req.body.email}, (err, data) => {
-        if(data){
+    LoginRegModel.findOne({ email: req.body.email }, (err, data) => {
+        if (data) {
             res.send("User already exist");
             console.log("User exist");
         } else {
@@ -79,13 +80,17 @@ app.post('/register', (req, res) => {
 // post request to login
 app.post('/login', (req, res) => {
 
-    LoginRegModel.findOne({email:req.body.logEmail}, (err, data) => {
-        if(data){
-            if(req.body.logPassword === data.password) {
-                res.send({message: "Login success"});
+    LoginRegModel.findOne({ email: req.body.logEmail }, (err, data) => {
+        if (data) {
+            if (req.body.logPassword === data.password) {
+                res.json({
+                    firstName: loginRegSchema.firstName,
+                    token: generateToken(loginRegSchema._id)
+                })
+                //res.send({ message: "Login success" });
                 console.log("Successful login");
             } else {
-                res.send({message:"Wrong credentials"});
+                res.send({ message: "Wrong credentials" });
                 console.log("Unsucessful login");
             }
         } else {
