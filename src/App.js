@@ -18,6 +18,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          {/* Navigation bar for the site */}
           <Navbar sticky="top" bg="dark" variant="dark">
             <Navbar.Brand href="/"><img src="/horse.jpg" width="70"></img></Navbar.Brand>
             <Nav className="ml-auto">
@@ -32,7 +33,7 @@ class App extends Component {
             </Nav>
           </Navbar>
 
-          {/* Tab on the navbar are routed to different components using Switch eg. Home tab on the navbar is showing the Content component */}
+          {/* Tabs on the navbar are routed to different components using Routes  */}
           <Routes>
             <Route path='/' element={< Home />} exact />
             <Route path='/categories' element={< Categories />} />

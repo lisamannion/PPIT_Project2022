@@ -56,13 +56,14 @@ var LoginRegModel = mongoose.model("users", loginRegSchema)
 
 // post request to create new user
 app.post('/register', (req, res) => {
-
+    // Querying the database
     LoginRegModel.findOne({ email: req.body.email }, (err, data) => {
+        // If email has been found in the database, the user already exists
         if (data) {
             res.send("User already exist");
-            console.log("User exist");
+            console.log("User exists");
         } else {
-            // interact to create
+            // If the email doesn't already exist in the database allow creation of new user
             LoginRegModel.create({
                 firstName: req.body.firstName,
                 surname: req.body.surname,
@@ -79,22 +80,23 @@ app.post('/register', (req, res) => {
 
 // post request to login
 app.post('/login', (req, res) => {
-
+    // Find the email in the database
     LoginRegModel.findOne({ email: req.body.logEmail }, (err, data) => {
+        // If the user's email is found in the database
         if (data) {
+            // If the provided password matches that record's password
             if (req.body.logPassword === data.password) {
+                // Generate JWT token - send to the user
                 res.json({
                     firstName: loginRegSchema.firstName,
                     token: generateToken(loginRegSchema._id)
                 })
-                //res.send({ message: "Login success" });
                 console.log("Successful login");
-            } else {
+            } else { // Otherwise the user is not logged in
                 res.send({ message: "Wrong credentials" });
                 console.log("Unsucessful login");
             }
-        } else {
-            // server to client to prevent duplicate creation
+        } else { // If the email is not in the database then the user is not registered
             res.send('Not registered');
             console.log("Unregistered");
         }

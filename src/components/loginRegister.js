@@ -5,7 +5,7 @@ import axios from 'axios'
 export class LoginRegister extends React.Component {
     constructor() {
         super();
-        // bind
+        // Bindings
         this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
         this.onChangeLogEmail = this.onChangeLogEmail.bind(this);
         this.onChangeLogPassword = this.onChangeLogPassword.bind(this);
@@ -24,41 +24,49 @@ export class LoginRegister extends React.Component {
         }
     }
 
+    // When the user tries to login after filling the form
     handleLoginSubmit(event) {
+        // Alert the user
         alert("Email: " + this.state.logEmail + "\nPassword: " + this.state.logPassword);
-        event.preventDefault(); // prevent crashing
+        event.preventDefault(); // prevent crashing on reload 
 
-        // create newUser object
+        // Defining new user object
         const user = {
             logEmail: this.state.logEmail,
             logPassword: this.state.logPassword
         }
-        axios.post('http://localhost:4000/login', user) // send user object to server
-            .then((res) => {
 
+        // Sending post request to the server
+        axios.post('http://localhost:4000/login', user)
+            .then((res) => { // If sucessful
                 console.log(res); // response to console
             })
-            .catch((err) => {
-                console.log(err); // error to console
+            .catch((err) => { // If there are errors
+                console.log(err);
             });
-        // set state to empty for another user
+        // Set the state back to empty
+        // Do we need this here? if the login is unsuccessful then surely it should still contain the details in case of typos
         this.setState({
             logEmail: '',
             logPassword: ''
         })
     }
 
+    // When registering a new user
     handleRegSubmit(event) {
+        // Alert the user that the form is being submitted
         alert("First Name: " + this.state.firstName + "\nSurname: " + this.state.surname + "\nEmail: " + this.state.email + "\nPassword: " + this.state.password);
-        event.preventDefault(); // prevent crashing
+        event.preventDefault(); // prevent crashing on reload
 
-        // create newUser object
+        // Create newUser object
         const newUser = {
             firstName: this.state.firstName,
             surname: this.state.surname,
             email: this.state.email,
             password: this.state.password
         }
+
+        // Sending post request to the server
         axios.post('http://localhost:4000/register', newUser) // send newUser object to server
             .then((res) => {
                 console.log(res); // response to console
@@ -66,7 +74,8 @@ export class LoginRegister extends React.Component {
             .catch((err) => {
                 console.log(err); // error to console
             });
-        // set state to empty for another user
+
+        // set state to empty for the next user
         this.setState({
             firstName: '',
             surname: '',

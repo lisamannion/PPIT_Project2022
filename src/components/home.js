@@ -4,6 +4,7 @@ import Carousel from 'react-bootstrap/Carousel'
 export class Home extends React.Component {
     render() {
         return (
+            // Code for the Home component 
             <Carousel>
                 <Carousel.Item>
                     <img className="d-block w-100 carousel-pic" src="/category.jpg" alt="First slide" />
