@@ -51,8 +51,16 @@ var loginRegSchema = new Schema({
     password: String
 });
 
+var horseSchema = new Schema({
+    name: String,
+    type: String,
+    discipline: String,
+    image: String
+});
+
 // create model for database for interaction
 var LoginRegModel = mongoose.model("users", loginRegSchema)
+var HorseModel = mongoose.model("horse", horseSchema)
 
 // post request to create new user
 app.post('/register', (req, res) => {
@@ -101,6 +109,22 @@ app.post('/login', (req, res) => {
             console.log("Unregistered");
         }
     })
+})
+
+// post request to create new horse ad
+app.post('/addHorse', (req, res) => {
+
+    HorseModel.create({
+        name: req.body.name,
+        type: req.body.type,
+        discipline: req.body.discipline,
+        image: req.body.image
+    })
+
+    // server to client to prevent duplicate creation
+    res.send('Horse Added');
+    console.log('Horse added successful');
+        
 })
 
 // Server app listening on port 4000
