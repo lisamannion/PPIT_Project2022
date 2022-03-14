@@ -12,7 +12,7 @@ export class CreateAd extends React.Component {
         this.onChangeAge = this.onChangeAge.bind(this);
         this.onChangeHeight = this.onChangeHeight.bind(this);
         this.onChangeGender = this.onChangeGender.bind(this);
-        this.onChangeType = this.onChangeType.bind(this);
+        this.onChangeBreed = this.onChangeBreed.bind(this);
         this.onChangeDiscipline = this.onChangeDiscipline.bind(this);
         this.onChangeImage = this.onChangeImage.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
@@ -21,7 +21,7 @@ export class CreateAd extends React.Component {
             age: '',
             height: '',
             gender: '',
-            type: '',
+            breed: '',
             discipline: '',
             image: '',
             price: ''
@@ -40,7 +40,7 @@ export class CreateAd extends React.Component {
             age: this.state.age,
             height: this.state.height,
             gender: this.state.gender,
-            type: this.state.type,
+            breed: this.state.breed,
             discipline: this.state.discipline,
             image: this.state.image,
             price: this.state.price
@@ -61,7 +61,7 @@ export class CreateAd extends React.Component {
             age: '',
             height: '',
             gender: '',
-            type: '',
+            breed: '',
             discipline: '',
             image: '',
             price: ''
@@ -96,10 +96,10 @@ export class CreateAd extends React.Component {
         })
     }
 
-    // will set type value in state when input changed
-    onChangeType(event) {
+    // will set breed value in state when input changed
+    onChangeBreed(event) {
         this.setState({
-            type: event.target.value
+            breed: event.target.value
         })
     }
 
@@ -176,14 +176,14 @@ export class CreateAd extends React.Component {
                             />
                         </div>
 
-                        {/* input type */}
+                        {/* input for breed */}
                         <div className="form-group">
-                            <label>Horse Type</label>
+                            <label>Horse Breed</label>
                             <input type="text"
                                 className="form-control"
-                                placeholder="Horse Type"
-                                value={this.state.type}
-                                onChange={this.onChangeType}
+                                placeholder="Enter breed"
+                                value={this.state.breed}
+                                onChange={this.onChangeBreed}
                             />
                         </div>
 

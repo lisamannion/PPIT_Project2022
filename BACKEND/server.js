@@ -56,7 +56,7 @@ var horseSchema = new Schema({
     age: String,
     height: String,
     gender: String,
-    type: String,
+    breed: String,
     discipline: String,
     image: String,
     price: String
@@ -123,7 +123,7 @@ app.post('/addHorse', (req, res) => {
         age: req.body.age,
         height: req.body.height,
         gender: req.body.gender,
-        type: req.body.type,
+        breed: req.body.breed,
         discipline: req.body.discipline,
         image: req.body.image,
         price: req.body.price
