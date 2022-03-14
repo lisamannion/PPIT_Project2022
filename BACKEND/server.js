@@ -52,14 +52,15 @@ var loginRegSchema = new Schema({
 });
 
 var horseSchema = new Schema({
-    name: String,
-    age: String,
-    height: String,
+    adName: { type: String, required: true },
+    age: Number,
+    height: Number,
     gender: String,
     breed: String,
     discipline: String,
     image: String,
-    price: String
+    description: { type: String, required: true },
+    price: { type: Number, required: true }
 });
 
 // create model for database for interaction
@@ -119,20 +120,21 @@ app.post('/login', (req, res) => {
 app.post('/addHorse', (req, res) => {
 
     HorseModel.create({
-        name: req.body.name,
+        adName: req.body.adName,
         age: req.body.age,
         height: req.body.height,
         gender: req.body.gender,
         breed: req.body.breed,
         discipline: req.body.discipline,
         image: req.body.image,
+        description: req.body.description,
         price: req.body.price
     })
 
     // server to client to prevent duplicate creation
     res.send('Horse Added');
     console.log('Horse added successful');
-        
+
 })
 
 // Server app listening on port 4000

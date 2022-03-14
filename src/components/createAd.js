@@ -8,22 +8,24 @@ export class CreateAd extends React.Component {
         super();
         // Bindings
         this.handleAddHorse = this.handleAddHorse.bind(this);
-        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeAdName = this.onChangeAdName.bind(this);
         this.onChangeAge = this.onChangeAge.bind(this);
         this.onChangeHeight = this.onChangeHeight.bind(this);
         this.onChangeGender = this.onChangeGender.bind(this);
         this.onChangeBreed = this.onChangeBreed.bind(this);
         this.onChangeDiscipline = this.onChangeDiscipline.bind(this);
         this.onChangeImage = this.onChangeImage.bind(this);
+        this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
         this.state = {
-            name: '',
+            adName: '',
             age: '',
             height: '',
             gender: '',
             breed: '',
             discipline: '',
             image: '',
+            description: '',
             price: ''
         }
     }
@@ -31,18 +33,19 @@ export class CreateAd extends React.Component {
     // When registering a new user
     handleAddHorse(event) {
         // Alert the user that the form is being submitted
-        alert("Horse Name: " + this.state.name + "\n Advert has been created");
+        alert("Horse Name: " + this.state.adName + "\n Advert has been created");
         event.preventDefault(); // prevent crashing on reload
 
         // Create newHorse object
         const newHorse = {
-            name: this.state.name,
+            adName: this.state.adName,
             age: this.state.age,
             height: this.state.height,
             gender: this.state.gender,
             breed: this.state.breed,
             discipline: this.state.discipline,
             image: this.state.image,
+            description: this.state.description,
             price: this.state.price
         }
 
@@ -57,21 +60,22 @@ export class CreateAd extends React.Component {
 
         // set state to empty for the next user
         this.setState({
-            name: '',
+            adName: '',
             age: '',
             height: '',
             gender: '',
             breed: '',
             discipline: '',
             image: '',
+            description: '',
             price: ''
         })
     }
 
     // will set name value in state when input changed
-    onChangeName(event) {
+    onChangeAdName(event) {
         this.setState({
-            name: event.target.value
+            adName: event.target.value
         })
     }
 
@@ -117,6 +121,12 @@ export class CreateAd extends React.Component {
         })
     }
 
+    onChangeDescription(event) {
+        this.setState({
+            description: event.target.value
+        })
+    }
+
     // Set the price of the horse
     onChangePrice(event) {
         this.setState({
@@ -134,19 +144,19 @@ export class CreateAd extends React.Component {
 
                         {/* input horse name */}
                         <div className="form-group">
-                            <label>Horse name</label>
+                            <label>Title of Ad</label>
                             <input type="text"
                                 className="form-control"
-                                placeholder="Horse Name"
-                                value={this.state.name}
-                                onChange={this.onChangeName}
+                                placeholder="Enter title here"
+                                value={this.state.adName}
+                                onChange={this.onChangeAdName}
                             />
                         </div>
 
                         {/* Input for age */}
                         <div className="form-group">
                             <label>Age</label>
-                            <input type="text"
+                            <input type="number"
                                 className="form-control"
                                 placeholder="Age"
                                 value={this.state.age}
@@ -157,7 +167,7 @@ export class CreateAd extends React.Component {
                         {/* Input for height */}
                         <div className="form-group">
                             <label>Height</label>
-                            <input type="text"
+                            <input type="number"
                                 className="form-control"
                                 placeholder="Height, cm or hh"
                                 value={this.state.height}
@@ -168,17 +178,19 @@ export class CreateAd extends React.Component {
                         {/* Input for gender */}
                         <div className="form-group">
                             <label>Gender</label>
-                            <input type="text"
-                                className="form-control"
-                                placeholder="Gender"
-                                value={this.state.gender}
-                                onChange={this.onChangeGender}
-                            />
+                            <select name="gender" className="form-control"
+                                 onChange={this.onChangeGender}>
+                                <option value="Colt" selected>Colt</option>
+                                <option value="Filly">Filly</option>
+                                <option value="Gelding">Gelding</option>
+                                <option value="Mare">Mare</option>
+                                <option value="Stallion">Stallion</option>
+                            </select>
                         </div>
 
                         {/* input for breed */}
                         <div className="form-group">
-                            <label>Horse Breed</label>
+                            <label>Breed</label>
                             <input type="text"
                                 className="form-control"
                                 placeholder="Enter breed"
@@ -189,23 +201,41 @@ export class CreateAd extends React.Component {
 
                         {/* input discipline */}
                         <div className="form-group">
-                            <label>Horse Dicipline</label>
+                            <label>Discipline</label>
+                            <select name="discipline" className="form-control"
+                                 onChange={this.onChangeDiscipline}>
+                                <option value="All Rounder">All Rounder</option>
+                                <option value="Cross Country">Cross Country</option>
+                                <option value="Dressage">Dressage</option>
+                                <option value="Eventing">Eventing</option>
+                                <option value="Hunter">Hunter</option>
+                                <option value="School Master">School Master</option>
+                                <option value="Showing">Showing</option>
+                                <option value="Showjumping">Showjumping</option>
+                                <option value="Western">Western</option>
+                                <option value="Other" selected>Other</option>
+                            </select>
+                        </div>
+
+                        {/* input image */}
+                        <div className="form-group">
+                            <label>Image</label>
                             <input type="text"
                                 className="form-control"
-                                placeholder="Discipline"
-                                value={this.state.discipline}
-                                onChange={this.onChangeDiscipline}
+                                placeholder="Add Image Url"
+                                value={this.state.image}
+                                onChange={this.onChangeImage}
                             />
                         </div>
 
                         {/* input image */}
                         <div className="form-group">
-                            <label>Horse Image</label>
+                            <label>Description</label>
                             <textarea type="text"
                                 className="form-control"
-                                placeholder="Add Image Url"
-                                value={this.state.image}
-                                onChange={this.onChangeImage}
+                                placeholder="Add description here"
+                                value={this.state.description}
+                                onChange={this.onChangeDescription}
                             />
                         </div>
 
@@ -220,7 +250,7 @@ export class CreateAd extends React.Component {
                             />
                         </div>
 
-                        <button type="submit" className="btn btn-lg btn-dark btn-block">Add Horse</button>
+                        <button type="submit" className="btn btn-lg btn-dark btn-block">Create Ad</button>
                     </form>
                 </Container>
             </div>
