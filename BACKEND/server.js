@@ -53,9 +53,13 @@ var loginRegSchema = new Schema({
 
 var horseSchema = new Schema({
     name: String,
+    age: String,
+    height: String,
+    gender: String,
     type: String,
     discipline: String,
-    image: String
+    image: String,
+    price: String
 });
 
 // create model for database for interaction
@@ -116,9 +120,13 @@ app.post('/addHorse', (req, res) => {
 
     HorseModel.create({
         name: req.body.name,
+        age: req.body.age,
+        height: req.body.height,
+        gender: req.body.gender,
         type: req.body.type,
         discipline: req.body.discipline,
-        image: req.body.image
+        image: req.body.image,
+        price: req.body.price
     })
 
     // server to client to prevent duplicate creation

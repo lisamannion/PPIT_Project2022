@@ -44,6 +44,7 @@ export class LoginRegister extends React.Component {
             .catch((err) => { // If there are errors
                 console.log(err);
             });
+            
         // Set the state back to empty
         // Do we need this here? if the login is unsuccessful then surely it should still contain the details in case of typos
         this.setState({
