@@ -2,7 +2,7 @@ import React from 'react'
 import Horses from './horses';
 import axios from 'axios';
 
-export class Categories extends React.Component {
+export class Listings extends React.Component {
     
     constructor() {
         super();

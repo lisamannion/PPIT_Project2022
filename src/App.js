@@ -2,7 +2,7 @@ import './App.css'
 import { Component } from 'react'
 import { AboutUs } from './components/aboutUs'
 import { Home } from './components/home'
-import { Categories } from './components/categories'
+import { Listings } from './components/listings'
 import { CreateAd } from './components/createAd'
 import { LoginRegister } from './components/loginRegister'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -24,7 +24,7 @@ class App extends Component {
             <Nav className="ml-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <NavDropdown title="Listings" id="listing-dropdown">
-                <NavDropdown.Item href="/categories">Browse Categories</NavDropdown.Item>
+                <NavDropdown.Item href="/listings">Browse Categories</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/createAd">Create Ad</NavDropdown.Item>
               </NavDropdown>
@@ -36,7 +36,7 @@ class App extends Component {
           {/* Tabs on the navbar are routed to different components using Routes  */}
           <Routes>
             <Route path='/' element={< Home />} exact />
-            <Route path='/categories' element={< Categories />} />
+            <Route path='/listings' element={< Listings />} />
             <Route path='/createAd' element={< CreateAd />} />
             <Route path='/aboutUs' element={< AboutUs />} />
             <Route path='/loginRegister' element={< LoginRegister />} />
