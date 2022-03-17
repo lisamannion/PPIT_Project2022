@@ -106,7 +106,7 @@ export class CreateAd extends React.Component {
             breed: event.target.value
         })
     }
-
+    
     // will set discipline value in state when input changed
     onChangeDiscipline(event) {
         this.setState({
@@ -213,7 +213,7 @@ export class CreateAd extends React.Component {
                                 <option value="Showing">Showing</option>
                                 <option value="Showjumping">Showjumping</option>
                                 <option value="Western">Western</option>
-                                <option value="Other" selected>Other</option>
+                                <option value="Not specified" selected>Not specified</option>
                             </select>
                         </div>
 

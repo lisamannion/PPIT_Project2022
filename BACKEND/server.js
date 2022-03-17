@@ -139,12 +139,21 @@ app.post('/addHorse', (req, res) => {
 
 // get request from /api/products and response with product json
 app.get('/horses', (req, res) => {
-
     // find doc in database
     HorseModel.find((err, data) => {
         res.json(data);
     })
+})
 
+// Listen for a get request and will return horse which has the id specified after /update/:id
+app.get('/horses/:id', (req, res) => {
+    console.log("Entered server get method for details of advert")
+    HorseModel.findById(req.params.id, (err, data) => {
+        console.log("Record found")
+        // Sending back the data
+        res.status(200).json(data)
+        console.log(data)
+    })
 })
 
 // Server app listening on port 4000

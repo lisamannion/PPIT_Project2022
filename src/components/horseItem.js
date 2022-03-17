@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import axios from 'axios';
 
-// create class ProductItem to show product information
+// create class HorseItem to show adverts
 class HorseItem extends Component {
     constructor() {
         super();
@@ -28,7 +26,7 @@ class HorseItem extends Component {
                         </blockquote>
                     </Card.Body>
                     {/* button for edit/update by changing url with id*/}
-                    <Link to={"/"} className="btn btn-primary">Details</Link>
+                    <Link to={"/horses/" + this.props.horse._id} className="btn btn-primary">Details</Link>
                 </Card>
             </div>
         )

@@ -5,10 +5,11 @@ import { Home } from './components/home'
 import { Listings } from './components/listings'
 import { CreateAd } from './components/createAd'
 import { LoginRegister } from './components/loginRegister'
+import { ViewAd } from './components/viewAd'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import React, { useState } from 'react'
+import React from 'react'
 import { MDBFooter } from 'mdb-react-ui-kit'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 
@@ -40,8 +41,8 @@ class App extends Component {
             <Route path='/createAd' element={< CreateAd />} />
             <Route path='/aboutUs' element={< AboutUs />} />
             <Route path='/loginRegister' element={< LoginRegister />} />
-            {/* Setting up the edit route with id parameter which was changed using button in app.js and Link tag */}
-            {/* <Route path='/edit/:id' component={Edit} /> */}
+            {/* Setting up the view horse route (to view details of specific advert) with id parameter */}
+            <Route path='/horses/:id' element={< ViewAd />} />
           </Routes>
         </div>
 
