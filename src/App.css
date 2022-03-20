@@ -53,3 +53,11 @@
 .form-group {
   margin: 10px;
 }
+
+.advert {
+  column-width: 100px;
+  text-align: left;
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 70px;
+}

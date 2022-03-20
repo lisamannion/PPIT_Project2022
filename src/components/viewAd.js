@@ -1,5 +1,4 @@
 import React from 'react'
-import Horses from './horses'
 import axios from 'axios'
 
 
@@ -7,8 +6,7 @@ export class ViewAd extends React.Component {
     // ViewAd constructor
     constructor() {
         super()
-        // bind
-        // this.ReloadData = this.ReloadData.bind(this)
+        this.id = window.location.pathname.substring(8)
 
         this.state = {
             _id: '',
@@ -26,9 +24,9 @@ export class ViewAd extends React.Component {
 
     // lifecycle method
     componentDidMount() {
-        // console.log(this.params.id)
+        console.log(this.id)
         // Get information from the server
-        axios.get('http://localhost:4000/horses/622fb6365a15c8adeeb1fb37')
+        axios.get('http://localhost:4000/horses/' + this.id)
             .then((response) => {
                 this.setState({ // Set the state of the update fields to the state of the document which came back from database
                     _id: response.data._id,
@@ -52,11 +50,29 @@ export class ViewAd extends React.Component {
         return (
             <div>
                 {/* message with horses listed */}
-                <div className="form">
-                    <h4>{this.state.height}</h4>
+                <div>
+                    <table className='advert' border='1'>
+                        <tr>
+                            <th colSpan={3} rowSpan={7}><img src={this.state.image} width='500'></img></th>
+                            <th colSpan={5}><h2>{this.state.adName}</h2><hr></hr></th>
+                        </tr>
+                        <tr>
+                            <td><b>AGE: </b>{this.state.age}</td>
+                            <td colSpan={2}><b>SEX: </b>{this.state.gender}</td>
+                            <td colSpan={2}><b>HEIGHT: </b>{this.state.height}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={3}><b>BREED: </b>{this.state.breed}</td>
+                            <td colSpan={2}><b>DISCIPLINE: </b>{this.state.discipline}</td>
+                        </tr>
+                        <tr>
+                            <td colspan={5}>{this.state.description}</td>
+                        </tr>
+                        <tr>
+                            <td colspan={5}><hr></hr><b>PRICE:</b> {this.state.price}</td>
+                        </tr>
+                    </table>
                 </div>
-                {/*  <Horses horses={this.state.horses}></Horses> */}
-                {/*<Horses horses={this.state.horses} ReloadData={this.ReloadData}></Horses> */}
             </div>
         )
     }

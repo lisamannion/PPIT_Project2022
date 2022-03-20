@@ -25,7 +25,7 @@ class App extends Component {
             <Nav className="ml-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <NavDropdown title="Listings" id="listing-dropdown">
-                <NavDropdown.Item href="/listings">Browse Categories</NavDropdown.Item>
+                <NavDropdown.Item href="/listings">Browse Listings</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/createAd">Create Ad</NavDropdown.Item>
               </NavDropdown>
