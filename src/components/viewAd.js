@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+import Table from 'react-bootstrap/Table'
 
 export class ViewAd extends React.Component {
     // ViewAd constructor
@@ -50,28 +50,28 @@ export class ViewAd extends React.Component {
         return (
             <div>
                 {/* message with horses listed */}
-                <div>
-                    <table className='advert' border='1'>
+                <div className='ad-container'>
+                    <Table className='advert' border='1'>
+                        <tbody>
                         <tr>
-                            <th colSpan={3} rowSpan={7}><img src={this.state.image} width='500'></img></th>
-                            <th colSpan={5}><h2>{this.state.adName}</h2><hr></hr></th>
+                            <th colSpan={1} rowSpan={7}><img src={this.state.image} width='500'></img></th>
+                            <th colSpan={6}><h2>{this.state.adName}</h2><hr></hr></th>
                         </tr>
                         <tr>
-                            <td><b>AGE: </b>{this.state.age}</td>
+                            <td colSpan={2}><b>AGE: </b>{this.state.age}</td>
                             <td colSpan={2}><b>SEX: </b>{this.state.gender}</td>
                             <td colSpan={2}><b>HEIGHT: </b>{this.state.height}</td>
                         </tr>
                         <tr>
-                            <td colSpan={3}><b>BREED: </b>{this.state.breed}</td>
+                            <td colSpan={2}><b>BREED: </b>{this.state.breed}</td>
                             <td colSpan={2}><b>DISCIPLINE: </b>{this.state.discipline}</td>
+                            <td colSpan={2}><b>PRICE:</b> {this.state.price}</td>
                         </tr>
                         <tr>
-                            <td colspan={5}>{this.state.description}</td>
+                            <td colSpan={5} rowSpan={2}>{this.state.description}</td>
                         </tr>
-                        <tr>
-                            <td colspan={5}><hr></hr><b>PRICE:</b> {this.state.price}</td>
-                        </tr>
-                    </table>
+                        </tbody>
+                    </Table>
                 </div>
             </div>
         )
