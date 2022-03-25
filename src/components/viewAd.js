@@ -53,23 +53,23 @@ export class ViewAd extends React.Component {
                 <div className='ad-container'>
                     <Table className='advert' border='1'>
                         <tbody>
-                        <tr>
-                            <th colSpan={1} rowSpan={7}><img src={this.state.image} width='500'></img></th>
-                            <th colSpan={6}><h2>{this.state.adName}</h2><hr></hr></th>
-                        </tr>
-                        <tr>
-                            <td colSpan={2}><b>AGE: </b>{this.state.age}</td>
-                            <td colSpan={2}><b>SEX: </b>{this.state.gender}</td>
-                            <td colSpan={2}><b>HEIGHT: </b>{this.state.height}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2}><b>BREED: </b>{this.state.breed}</td>
-                            <td colSpan={2}><b>DISCIPLINE: </b>{this.state.discipline}</td>
-                            <td colSpan={2}><b>PRICE:</b> {this.state.price}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan={5} rowSpan={2}>{this.state.description}</td>
-                        </tr>
+                            <tr>
+                                <th colSpan={1} rowSpan={7}><img src={this.state.image} width='500'></img></th>
+                                <th colSpan={6}><h2>{this.state.adName}</h2><hr></hr></th>
+                            </tr>
+                            <tr>
+                                <td colSpan={2}><b>AGE: </b>{this.state.age}</td>
+                                <td colSpan={2}><b>BREED: </b>{this.state.breed}</td>
+                                <td colSpan={2}><b>DISCIPLINE: </b>{this.state.discipline}</td>
+                            </tr>
+                            <tr>
+                                <td colSpan={2}><b>HEIGHT: </b>{this.state.height}</td>
+                                <td colSpan={2}><b>SEX: </b>{this.state.gender}</td>
+                                <td colSpan={2}><b>PRICE:</b> {this.state.price}</td>
+                            </tr>
+                            <tr>
+                                <td colSpan={5} rowSpan={2}>{this.state.description}</td>
+                            </tr>
                         </tbody>
                     </Table>
                 </div>

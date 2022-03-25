@@ -105,6 +105,7 @@ app.post('/login', (req, res) => {
                     token: generateToken(loginRegSchema._id)
                 })
                 console.log("Successful login");
+                
             } else { // Otherwise the user is not logged in
                 res.send({ message: "Wrong credentials" });
                 console.log("Unsucessful login");

@@ -39,18 +39,17 @@ export class LoginRegister extends React.Component {
         // Sending post request to the server
         axios.post('http://localhost:4000/login', user)
             .then((res) => { // If sucessful
-                console.log(res); // response to console
+                if (res.data.token) {
+                    localStorage.setItem('token', res.data.token)
+                    console.log(localStorage.getItem('token'))
+                }
             })
             .catch((err) => { // If there are errors
                 console.log(err);
             });
             
-        // Set the state back to empty
-        // Do we need this here? if the login is unsuccessful then surely it should still contain the details in case of typos
-        this.setState({
-            logEmail: '',
-            logPassword: ''
-        })
+           
+        
     }
 
     // When registering a new user
