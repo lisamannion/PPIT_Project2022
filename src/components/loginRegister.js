@@ -42,6 +42,10 @@ export class LoginRegister extends React.Component {
                 if (res.data.token) {
                     localStorage.setItem('token', res.data.token)
                     console.log(localStorage.getItem('token'))
+                    document.getElementById("logoutUser").hidden = false
+                    document.getElementById("userGreeting").hidden = false
+                    document.getElementById("loginReg").hidden = true
+                    document.getElementById("userGreeting").innerHTML = "Hello ???" 
                 }
             })
             .catch((err) => { // If there are errors

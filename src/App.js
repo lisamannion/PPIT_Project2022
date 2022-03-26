@@ -15,6 +15,16 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 
 // App's class itself
 class App extends Component {
+
+  logout() {
+    if (localStorage.token) {
+      localStorage.removeItem("token")
+      document.getElementById("loginReg").hidden = false
+      document.getElementById("logoutUser").hidden = true
+      document.getElementById("userGreeting").hidden = true
+    }
+  }
+
   render() {
     return (
       <Router>
@@ -30,7 +40,11 @@ class App extends Component {
                 <NavDropdown.Item href="/createAd">Create Ad</NavDropdown.Item>
               </NavDropdown>
               <Nav.Link href="/aboutUs">About Us</Nav.Link>
-              <Nav.Link href="/loginRegister">Login/Register</Nav.Link>
+              <Nav.Link id="loginReg" href="/loginRegister">Login/Register</Nav.Link>
+              <Nav.Link id="userGreeting" hidden>
+                
+              </Nav.Link>
+              <Nav.Link id="logoutUser" hidden onClick={this.logout}>Logout</Nav.Link>
             </Nav>
           </Navbar>
 
