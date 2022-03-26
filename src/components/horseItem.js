@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 
 // create class HorseItem to show adverts
 class HorseItem extends Component {
-    constructor() {
-        super();
-    }
 
     render() {
         return (
@@ -17,9 +14,9 @@ class HorseItem extends Component {
                     <Card.Header><b>{this.props.horse.adName}</b></Card.Header>
                     <Card.Body>
                         <blockquote>
-                            <img src={this.props.horse.image} className="cardImg" style={{ height: '15rem' }}></img>
+                            <img src={this.props.horse.image} className="cardImg" style={{ height: '15rem' }} alt="horse image"></img>
                             <footer>
-                                Age: {this.props.horse.age} <br></br>
+                                Gender: {this.props.horse.gender} <br></br>
                                 Discipline: {this.props.horse.discipline} <br></br>
                                 Price: €{this.props.horse.price}
                             </footer>

@@ -6,7 +6,7 @@ class Horses extends Component {
     render() {
         // get products and map to individual element (product)
         return this.props.horses.map((horse) => {
-            return <HorseItem horse={horse} key={horse._id} ReloadData={this.props.ReloadData}></HorseItem>
+            return <HorseItem horse={horse} key={horse._id}></HorseItem>
         });
     }
 }

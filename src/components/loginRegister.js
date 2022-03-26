@@ -46,10 +46,7 @@ export class LoginRegister extends React.Component {
             })
             .catch((err) => { // If there are errors
                 console.log(err);
-            });
-            
-           
-        
+            });             
     }
 
     // When registering a new user
