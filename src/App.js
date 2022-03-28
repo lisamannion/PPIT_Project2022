@@ -25,6 +25,17 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    if (localStorage.getItem('token')) {
+      let userExists = JSON.parse(localStorage.getItem('token'))
+      console.log(localStorage.getItem('token'))
+      document.getElementById("logoutUser").hidden = false
+      document.getElementById("userGreeting").hidden = false
+      document.getElementById("loginReg").hidden = true
+      document.getElementById("userGreeting").innerHTML = "Hello "
+    }
+  }
+
   render() {
     return (
       <Router>
