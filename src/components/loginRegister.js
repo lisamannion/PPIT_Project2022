@@ -40,7 +40,7 @@ export class LoginRegister extends React.Component {
         axios.post('http://localhost:4000/login', user)
             .then((res) => { // If sucessful
                 if (res.data.token) {
-                    localStorage.setItem('token', res.data.token)
+                    localStorage.setItem('token', JSON.stringify(res.data))
                     console.log(localStorage.getItem('token'))
                     document.getElementById("logoutUser").hidden = false
                     document.getElementById("userGreeting").hidden = false
