@@ -101,8 +101,7 @@ app.post('/login', (req, res) => {
             if (req.body.logPassword === data.password) {
                 // Generate JWT token - send to the user
                 res.json({
-                    firstName: data.firstName,
-                    token: generateToken(data.email)
+                    token: generateToken(data)
                 })
                 console.log("Successful login");
                 
