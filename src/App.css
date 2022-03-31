@@ -65,3 +65,41 @@
   padding-left: 70px;
   padding-right: 70px;
 }
+
+.footer {
+  background-color: #40474e;
+  text-align: left;
+  padding: 55px 50px;
+  display: inline-block;
+  width: 100%;
+  color: #ffffff;
+}
+
+.footer-links {
+  color: #ffffff;
+}
+
+.footer-links:hover {
+  text-decoration: none;
+  color:rgba(97,108,254);
+}
+
+.footer-icons {
+  margin-right: 10px;
+}
+
+.footer-icons:hover {
+  color: #ffffff;
+}
+
+.facebook {
+  color: #4968ad;
+}
+
+.twitter {
+  color: #49a1eb;
+}
+
+.instagram {
+  color: black;
+}
