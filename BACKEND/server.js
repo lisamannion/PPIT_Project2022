@@ -74,7 +74,6 @@ app.post('/register', (req, res) => {
         // If email has been found in the database, the user already exists
         if (data) {
             res.send("User already exist");
-            console.log("User exists");
         } else {
             // If the email doesn't already exist in the database allow creation of new user
             LoginRegModel.create({
@@ -86,7 +85,6 @@ app.post('/register', (req, res) => {
 
             // server to client to prevent duplicate creation
             res.send('User Added');
-            console.log('Create successful');
         }
     })
 })
@@ -102,16 +100,12 @@ app.post('/login', (req, res) => {
                 // Generate JWT token - send to the user
                 res.json({
                     token: generateToken(data)
-                })
-                console.log("Successful login");
-                
+                })                
             } else { // Otherwise the user is not logged in
                 res.send({ message: "Wrong credentials" });
-                console.log("Unsucessful login");
             }
         } else { // If the email is not in the database then the user is not registered
             res.send('Not registered');
-            console.log("Unregistered");
         }
     })
 })
@@ -133,8 +127,6 @@ app.post('/addHorse', (req, res) => {
 
     // server to client to prevent duplicate creation
     res.send('Horse Added');
-    console.log('Horse added successful');
-
 })
 
 // get request from /horses and response with json
@@ -147,12 +139,9 @@ app.get('/horses', (req, res) => {
 
 // Listen for a get request and will return horse which has the id specified after /update/:id
 app.get('/horses/:id', (req, res) => {
-    console.log("Entered server get method for details of advert")
     HorseModel.findById(req.params.id, (err, data) => {
-        console.log("Record found")
         // Sending back the data
         res.status(200).json(data)
-        //console.log(data)
     })
 })
 

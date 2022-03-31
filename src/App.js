@@ -71,7 +71,7 @@ class App extends Component {
             {/* Setting up the view horse route (to view details of specific advert) with id parameter */}
             <Route path='/horses/:id' element={< ViewAd />} />
             <Route path='/userAccount' element={< UserAccount />} />
-            <Route path='/validate' element={< UserAccount/>} />
+            {/* <Route path='/validate' element={< UserAccount/>} /> */}
           </Routes>
         </div>
 

@@ -57,8 +57,9 @@ export class LoginRegister extends React.Component {
                     document.getElementById("loginReg").hidden = true
                     document.getElementById("userGreeting").innerHTML = "Hello ???"
 
-                    window.location='/userAccount'
                     // // Redirect the user to user account information page
+                    window.location='/userAccount'
+                    // Not sure if this is needed here
                     // axios.post('http://localhost:4000/userAccount')
                     //     .then((res) => { // If token valid, user is redirected to the user page
                             
@@ -66,7 +67,9 @@ export class LoginRegister extends React.Component {
                     //     .catch((err) => {
                     //         console.log(err)
                     //     })
-                }
+                } else {
+                    document.getElementById('loginError').hidden = false
+                }          
             })
             .catch((err) => { // If there are errors
                 console.log(err);
@@ -158,7 +161,7 @@ export class LoginRegister extends React.Component {
                             {/* create login form */}
                             <form onSubmit={this.handleLoginSubmit}>
                                 <h3>Login</h3>
-
+                                    <h6 id='loginError' hidden={true}>Please check login details and try again</h6>
                                 {/* input login email */}
                                 <div className="form-group">
                                     <label>Email</label>
