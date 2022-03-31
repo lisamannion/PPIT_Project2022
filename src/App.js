@@ -8,11 +8,12 @@ import { LoginRegister } from './components/loginRegister'
 import { ViewAd } from './components/viewAd'
 import { UserAccount } from './components/userAccount'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, Row } from 'react-bootstrap'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import React from 'react'
 import { MDBFooter } from 'mdb-react-ui-kit'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+import 'font-awesome/css/font-awesome.min.css'
 
 // App's class itself
 class App extends Component {
@@ -76,12 +77,43 @@ class App extends Component {
 
         {/* Footer */}
         <div>
-          <MDBFooter className='text-center text-white' style={{ backgroundColor: '#21081a' }}>
-            <div className='container p-4'></div>
+          <MDBFooter className='footer'>
+            <Row>
+              <div className="footer-left col-md-4">
+                  <p>
+                      <a href="/" className="footer-links">Home </a>|
+                      <a href="/listings" className="footer-links"> Listings </a>|
+                      <a href="/aboutUs" className="footer-links"> About Us </a>
+                  </p>
+                  <p className="footer-company-name">Horse © 2022</p>
+              </div>
 
-            <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
-              © 2022 Copyright:<a className='text-white' href='https://mdbootstrap.com/'>MDBootstrap.com</a>
-            </div>
+              <div className="footer-center col-md-4">
+                  <div>
+                      <p>
+                          <i className="fa fa-map-marker"></i>
+                          <a href="http://maps.google.com/maps?q=Dublin Road, Galway City, Co. Galway, Ireland" className="footer-links" target="_blank"> Dublin Road, Galway City, Co. Galway, Ireland</a> 
+                      </p>
+                  </div>
+                  <div>
+                      <p><i className="fa fa-phone"></i> 0831234567</p>
+                  </div>
+                  <div>
+                      <p>
+                          <i className="fa fa-envelope"></i>
+                          <a href="mailto:support@horse.com" className="footer-links" target="_blank"> support@horse.com</a>
+                      </p>
+                  </div>
+              </div>
+              <div className="footer-right col-md-4">
+                  <p>Follow us on our social medias!</p>
+                  <div>
+                      <a href="https://www.facebook.com" target="_blank"><i className="fa fa-facebook-square fa-2x footer-icons facebook"></i></a>
+                      <a href="https://www.twitter.com" target="_blank"><i className="fa fa-twitter fa-2x footer-icons twitter"></i></a>
+                      <a href="https://www.instagram.com" target="_blank"><i className="fa fa-instagram fa-2x footer-icons instagram"></i></a>
+                  </div>
+              </div>
+            </Row>
           </MDBFooter>
         </div>
       </Router>
