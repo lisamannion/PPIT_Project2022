@@ -137,7 +137,7 @@ app.post('/addHorse', (req, res) => {
 
 })
 
-// get request from /api/products and response with product json
+// get request from /horses and response with json
 app.get('/horses', (req, res) => {
     // find doc in database
     HorseModel.find((err, data) => {
@@ -152,8 +152,13 @@ app.get('/horses/:id', (req, res) => {
         console.log("Record found")
         // Sending back the data
         res.status(200).json(data)
-        console.log(data)
+        //console.log(data)
     })
+})
+
+app.get('/validate', (req, res) => {
+    console.log("Enter /validate")
+    //res.json(req.headers.token)
 })
 
 // Server app listening on port 4000

@@ -20,17 +20,16 @@ export class LoginRegister extends React.Component {
             firstName: '',
             surname: '',
             email: '',
-            password: ''
+            password: '',
+            token: ''
         }
     }
 
     // When the user tries to login after filling the form
     handleLoginSubmit(event) {
-        // Alert the user
-        alert("Email: " + this.state.logEmail + "\nPassword: " + this.state.logPassword);
         event.preventDefault(); // prevent crashing on reload 
 
-        // Defining new user object
+        // Defining a new user object
         const user = {
             logEmail: this.state.logEmail,
             logPassword: this.state.logPassword
@@ -39,18 +38,41 @@ export class LoginRegister extends React.Component {
         // Sending post request to the server
         axios.post('http://localhost:4000/login', user)
             .then((res) => { // If sucessful
-                if (res.data.token) {
-                    localStorage.setItem('token', JSON.stringify(res.data))
-                    console.log(localStorage.getItem('token'))
+                if (res.data.token) { // If there is a token in response
+                    // Store the response data
+                    let response = res.data
+
+                    // Store the token from the reponse in local storage
+                    localStorage.setItem('token', response.token)
+
+                    // Store the token in state
+                    this.state.token = localStorage.getItem('token')
+
+                    // Send an alert to the user to notify successful login
+                    alert("You have successfully logged in")
+
+                    // Alter the elements that change when the user is logged in
                     document.getElementById("logoutUser").hidden = false
                     document.getElementById("userGreeting").hidden = false
                     document.getElementById("loginReg").hidden = true
-                    document.getElementById("userGreeting").innerHTML = "Hello ???" 
+                    document.getElementById("userGreeting").innerHTML = "Hello ???"
+
+                    window.location='/userAccount'
+                    // // Redirect the user to user account information page
+                    // axios.post('http://localhost:4000/userAccount')
+                    //     .then((res) => { // If token valid, user is redirected to the user page
+                            
+                    //     })
+                    //     .catch((err) => {
+                    //         console.log(err)
+                    //     })
                 }
             })
             .catch((err) => { // If there are errors
                 console.log(err);
-            });             
+            })
+
+
     }
 
     // When registering a new user

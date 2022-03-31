@@ -6,6 +6,7 @@ import { Listings } from './components/listings'
 import { CreateAd } from './components/createAd'
 import { LoginRegister } from './components/loginRegister'
 import { ViewAd } from './components/viewAd'
+import { UserAccount } from './components/userAccount'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -27,7 +28,7 @@ class App extends Component {
 
   componentDidMount() {
     if (localStorage.getItem('token')) {
-      let userExists = JSON.parse(localStorage.getItem('token'))
+      let userExists = localStorage.getItem('token')
       console.log(localStorage.getItem('token'))
       document.getElementById("logoutUser").hidden = false
       document.getElementById("userGreeting").hidden = false
@@ -68,6 +69,8 @@ class App extends Component {
             <Route path='/loginRegister' element={< LoginRegister />} />
             {/* Setting up the view horse route (to view details of specific advert) with id parameter */}
             <Route path='/horses/:id' element={< ViewAd />} />
+            <Route path='/userAccount' element={< UserAccount />} />
+            <Route path='/validate' element={< UserAccount/>} />
           </Routes>
         </div>
 
