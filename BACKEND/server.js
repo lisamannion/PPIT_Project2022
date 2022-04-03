@@ -2,6 +2,7 @@ const { generateToken } = require('../BACKEND/generateToken')
 const { validateToken } = require('../BACKEND/validateToken')
 const express = require('express')
 const app = express()
+const bcrypt = require('bcryptjs')
 
 // Changed port from 3000 to 4000 so that its not running on the same port as the app
 const port = 4000
@@ -75,14 +76,21 @@ app.post('/register', (req, res) => {
         // If email has been found in the database, the user already exists
         if (data) {
             res.send("User already exist");
-        } else {
+        } else { // If email is unique
+            try {
+                // Encrypt the password for storage in database
+            const encryptedPassword = bcrypt.hashSync(req.body.password, 10)
+            
             // If the email doesn't already exist in the database allow creation of new user
             LoginRegModel.create({
                 firstName: req.body.firstName,
                 surname: req.body.surname,
                 email: req.body.email,
-                password: req.body.password
+                password: encryptedPassword
             })
+            } catch (error) {
+                console.log(error)
+            }
 
             // server to client to prevent duplicate creation
             res.send('User Added');
@@ -96,8 +104,9 @@ app.post('/login', (req, res) => {
     LoginRegModel.findOne({ email: req.body.logEmail }, (err, data) => {
         // If the user's email is found in the database
         if (data) {
+            const isPasswordValid = bcrypt.compareSync(req.body.logPassword, data.password)
             // If the provided password matches that record's password
-            if (req.body.logPassword === data.password) {
+            if (isPasswordValid) {
                 // Generate JWT token - send to the user
                 res.json({
                     token: generateToken(data)
