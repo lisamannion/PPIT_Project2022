@@ -1,4 +1,5 @@
 const { generateToken } = require('../BACKEND/generateToken')
+const { validateToken } = require('../BACKEND/validateToken')
 const express = require('express')
 const app = express()
 
@@ -100,7 +101,7 @@ app.post('/login', (req, res) => {
                 // Generate JWT token - send to the user
                 res.json({
                     token: generateToken(data)
-                })                
+                })
             } else { // Otherwise the user is not logged in
                 res.send({ message: "Wrong credentials" });
             }
@@ -145,9 +146,15 @@ app.get('/horses/:id', (req, res) => {
     })
 })
 
-app.get('/validate', (req, res) => {
-    console.log("Enter /validate")
-    //res.json(req.headers.token)
+app.post('/validate', (req, res) => {
+    const token = req.body.token
+
+    try {
+        // Sends back the user information (decoded payload) if the signature hasn't been tampered with
+        res.json(validateToken(token))
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 // Server app listening on port 4000

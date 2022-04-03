@@ -24,13 +24,15 @@ class App extends Component {
       document.getElementById("loginReg").hidden = false
       document.getElementById("logoutUser").hidden = true
       document.getElementById("userGreeting").hidden = true
+
+      // Redirect to the home page
+      window.location='/loginRegister'
     }
   }
 
   componentDidMount() {
     if (localStorage.getItem('token')) {
       let userExists = localStorage.getItem('token')
-      console.log(localStorage.getItem('token'))
       document.getElementById("logoutUser").hidden = false
       document.getElementById("userGreeting").hidden = false
       document.getElementById("loginReg").hidden = true
@@ -55,7 +57,7 @@ class App extends Component {
               <Nav.Link href="/aboutUs">About Us</Nav.Link>
               <Nav.Link id="loginReg" href="/loginRegister">Login/Register</Nav.Link>
               <Nav.Link id="userGreeting" hidden>
-                
+
               </Nav.Link>
               <Nav.Link id="logoutUser" hidden onClick={this.logout}>Logout</Nav.Link>
             </Nav>
@@ -71,7 +73,6 @@ class App extends Component {
             {/* Setting up the view horse route (to view details of specific advert) with id parameter */}
             <Route path='/horses/:id' element={< ViewAd />} />
             <Route path='/userAccount' element={< UserAccount />} />
-            {/* <Route path='/validate' element={< UserAccount/>} /> */}
           </Routes>
         </div>
 
@@ -80,38 +81,38 @@ class App extends Component {
           <MDBFooter className='footer'>
             <Row>
               <div className="footer-left col-md-4">
-                  <p>
-                      <a href="/" className="footer-links">Home </a>|
-                      <a href="/listings" className="footer-links"> Listings </a>|
-                      <a href="/aboutUs" className="footer-links"> About Us </a>
-                  </p>
-                  <p className="footer-company-name">Horse © 2022</p>
+                <p>
+                  <a href="/" className="footer-links">Home </a>|
+                  <a href="/listings" className="footer-links"> Listings </a>|
+                  <a href="/aboutUs" className="footer-links"> About Us </a>
+                </p>
+                <p className="footer-company-name">Horse © 2022</p>
               </div>
 
               <div className="footer-center col-md-4">
-                  <div>
-                      <p>
-                          <i className="fa fa-map-marker"></i>
-                          <a href="http://maps.google.com/maps?q=Dublin Road, Galway City, Co. Galway, Ireland" className="footer-links" target="_blank"> Dublin Road, Galway City, Co. Galway, Ireland</a> 
-                      </p>
-                  </div>
-                  <div>
-                      <p><i className="fa fa-phone"></i> 0831234567</p>
-                  </div>
-                  <div>
-                      <p>
-                          <i className="fa fa-envelope"></i>
-                          <a href="mailto:support@horse.com" className="footer-links" target="_blank"> support@horse.com</a>
-                      </p>
-                  </div>
+                <div>
+                  <p>
+                    <i className="fa fa-map-marker"></i>
+                    <a href="http://maps.google.com/maps?q=Dublin Road, Galway City, Co. Galway, Ireland" className="footer-links" target="_blank"> Dublin Road, Galway City, Co. Galway, Ireland</a>
+                  </p>
+                </div>
+                <div>
+                  <p><i className="fa fa-phone"></i> 0831234567</p>
+                </div>
+                <div>
+                  <p>
+                    <i className="fa fa-envelope"></i>
+                    <a href="mailto:support@horse.com" className="footer-links" target="_blank"> support@horse.com</a>
+                  </p>
+                </div>
               </div>
               <div className="footer-right col-md-4">
-                  <p>Follow us on our social medias!</p>
-                  <div>
-                      <a href="https://www.facebook.com" target="_blank"><i className="fa fa-facebook-square fa-2x footer-icons facebook"></i></a>
-                      <a href="https://www.twitter.com" target="_blank"><i className="fa fa-twitter fa-2x footer-icons twitter"></i></a>
-                      <a href="https://www.instagram.com" target="_blank"><i className="fa fa-instagram fa-2x footer-icons instagram"></i></a>
-                  </div>
+                <p>Follow us on our social medias!</p>
+                <div>
+                  <a href="https://www.facebook.com" target="_blank"><i className="fa fa-facebook-square fa-2x footer-icons facebook"></i></a>
+                  <a href="https://www.twitter.com" target="_blank"><i className="fa fa-twitter fa-2x footer-icons twitter"></i></a>
+                  <a href="https://www.instagram.com" target="_blank"><i className="fa fa-instagram fa-2x footer-icons instagram"></i></a>
+                </div>
               </div>
             </Row>
           </MDBFooter>

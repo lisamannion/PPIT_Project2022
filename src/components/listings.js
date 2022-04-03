@@ -24,14 +24,14 @@ export class Listings extends React.Component {
     // filterdata using horses state and update filterData state after filtering
     filterData = (e) => {
         // if selectedIndex from dropdownmenu is between 2 to 6 (inclusive), filter by gender
-        if(e.target.selectedIndex >= 2 && e.target.selectedIndex <=6) {
-            var filteredData = this.state.horses.filter((horse)=> {
+        if (e.target.selectedIndex >= 2 && e.target.selectedIndex <= 6) {
+            var filteredData = this.state.horses.filter((horse) => {
                 return horse.gender === e.target.value
             })
         }
         // else if selectedIndex from dropdownmenu is greater or equal than 8, filter by discipline
-        else if(e.target.selectedIndex >= 8) {
-            filteredData = this.state.horses.filter((horse)=> {
+        else if (e.target.selectedIndex >= 8) {
+            filteredData = this.state.horses.filter((horse) => {
                 return horse.discipline === e.target.value
             })
         }
@@ -44,9 +44,9 @@ export class Listings extends React.Component {
             filterData: filteredData
         })
     }
-    
+
     render() {
-        return(
+        return (
             <div>
                 {/* Message */}
                 <div className="form-group">
@@ -76,5 +76,5 @@ export class Listings extends React.Component {
                 <Horses horses={this.state.filterData}></Horses>
             </div>
         )
-    }    
+    }
 }
