@@ -37,6 +37,7 @@ export class UserAccount extends React.Component {
                 .then((res) => {
                     // Store the verified user details in the userDetails state
                     this.setState({ userDetails: res.data.id })
+                    document.getElementById("userGreeting").innerHTML = "Hello " + this.state.userDetails.firstName
                 })
                 .catch((err) => {
                     console.log("entered axios error")

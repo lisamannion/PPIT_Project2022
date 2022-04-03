@@ -24,6 +24,7 @@ class App extends Component {
       document.getElementById("loginReg").hidden = false
       document.getElementById("logoutUser").hidden = true
       document.getElementById("userGreeting").hidden = true
+      document.getElementById("account").hidden = false
 
       // Redirect to the home page
       window.location='/loginRegister'
@@ -35,8 +36,8 @@ class App extends Component {
       let userExists = localStorage.getItem('token')
       document.getElementById("logoutUser").hidden = false
       document.getElementById("userGreeting").hidden = false
+      document.getElementById("account").hidden = false
       document.getElementById("loginReg").hidden = true
-      document.getElementById("userGreeting").innerHTML = "Hello "
     }
   }
 
@@ -56,9 +57,8 @@ class App extends Component {
               </NavDropdown>
               <Nav.Link href="/aboutUs">About Us</Nav.Link>
               <Nav.Link id="loginReg" href="/loginRegister">Login/Register</Nav.Link>
-              <Nav.Link id="userGreeting" hidden>
-
-              </Nav.Link>
+              <Nav.Link id="userGreeting" hidden></Nav.Link>
+              <Nav.Link id="account" hidden href="/userAccount">Manage Account</Nav.Link>
               <Nav.Link id="logoutUser" hidden onClick={this.logout}>Logout</Nav.Link>
             </Nav>
           </Navbar>

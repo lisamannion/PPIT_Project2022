@@ -55,7 +55,7 @@ export class LoginRegister extends React.Component {
                     document.getElementById("logoutUser").hidden = false
                     document.getElementById("userGreeting").hidden = false
                     document.getElementById("loginReg").hidden = true
-                    document.getElementById("userGreeting").innerHTML = "Hello ???"
+                    document.getElementById("account").hidden = false
 
                     // // Redirect the user to user account information page
                     window.location='/userAccount'
