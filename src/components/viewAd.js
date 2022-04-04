@@ -18,7 +18,9 @@ export class ViewAd extends React.Component {
             discipline: '',
             image: '',
             description: '',
-            price: ''
+            price: '',
+            contactName: '',
+            contactEmail: ''
         }
     }
 
@@ -38,7 +40,9 @@ export class ViewAd extends React.Component {
                     discipline: response.data.discipline,
                     image: response.data.image,
                     description: response.data.description,
-                    price: response.data.price
+                    price: response.data.price,
+                    contactName: response.data.contactName,
+                    contactEmail: response.data.contactEmail
                 })
             }) // getting http response
             .catch((error) => {
@@ -67,8 +71,14 @@ export class ViewAd extends React.Component {
                                 <td colSpan={2}><b>SEX: </b>{this.state.gender}</td>
                                 <td colSpan={2}><b>PRICE:</b> {this.state.price}</td>
                             </tr>
+                            
                             <tr>
-                                <td colSpan={5} rowSpan={2}>{this.state.description}</td>
+                                <td colSpan={2}><b>CONTACT INFO</b></td>
+                                <td colSpan={2}><b>Seller Name: </b>{this.state.contactName}</td>
+                                <td colSpan={2}><b>Seller Email: </b>{this.state.contactEmail}</td>
+                            </tr>
+                            <tr>
+                                <td colSpan={4} rowSpan={2}>{this.state.description}</td>
                             </tr>
                         </tbody>
                     </Table>

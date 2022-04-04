@@ -14,9 +14,15 @@ import React from 'react'
 import { MDBFooter } from 'mdb-react-ui-kit'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import 'font-awesome/css/font-awesome.min.css'
+import axios from 'axios'
 
 // App's class itself
 class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {token: ''}
+  }
 
   logout() {
     if (localStorage.token) {
@@ -33,11 +39,19 @@ class App extends Component {
 
   componentDidMount() {
     if (localStorage.getItem('token')) {
-      let userExists = localStorage.getItem('token')
+      this.state.token = localStorage.getItem('token')
       document.getElementById("logoutUser").hidden = false
       document.getElementById("userGreeting").hidden = false
       document.getElementById("account").hidden = false
       document.getElementById("loginReg").hidden = true
+      axios.post('http://localhost:4000/validate', this.state)
+      .then((res) => {
+        document.getElementById("userGreeting").innerHTML = "Hello " + res.data.id.firstName
+      })
+      .catch((err) => {
+          console.log("entered axios error")
+          console.log(err)
+      })
     }
   }
 

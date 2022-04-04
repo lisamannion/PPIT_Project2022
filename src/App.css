@@ -62,8 +62,7 @@
   column-width: 100px;
   max-height: max-content;
   text-align: left;
-  padding-left: 70px;
-  padding-right: 70px;
+  padding: 70px;
 }
 
 .footer {

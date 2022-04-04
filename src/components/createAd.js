@@ -26,10 +26,35 @@ export class CreateAd extends React.Component {
             discipline: '',
             image: '',
             description: '',
-            price: ''
+            price: '',
+            contactName: '',
+            contactEmail: '',
+            token: ''
         }
     }
-    
+
+    componentDidMount() {
+        this.state.token = localStorage.getItem('token')
+
+        // Check localStorage for a token
+        if (this.state.token == null) { // Token not found - User not logged in
+            // Send an alert to the user to login before they can access the page
+            alert("You must be logged in to view this page")
+
+            // Redirect to the loginRegister page
+            window.location = '/loginRegister'
+        }
+        else {
+            axios.post('http://localhost:4000/validate', this.state)
+            .then((res) => {
+                this.setState({ contactName: res.data.id.firstName, contactEmail: res.data.id.email})
+            })
+            .catch((err) => {
+                console.log("entered axios error")
+                console.log(err)
+            })
+        }
+    }
     // When registering a new user
     handleAddHorse(event) {
         // Alert the user that the form is being submitted
@@ -46,7 +71,9 @@ export class CreateAd extends React.Component {
             discipline: this.state.discipline,
             image: this.state.image,
             description: this.state.description,
-            price: this.state.price
+            price: this.state.price,
+            contactName: this.state.contactName,
+            contactEmail: this.state.contactEmail
         }
 
         // Sending post request to the server
@@ -106,7 +133,7 @@ export class CreateAd extends React.Component {
             breed: event.target.value
         })
     }
-    
+
     // will set discipline value in state when input changed
     onChangeDiscipline(event) {
         this.setState({
@@ -250,10 +277,30 @@ export class CreateAd extends React.Component {
                             />
                         </div>
 
+                        {/* Contact Name */}
+                        <div className="form-group">
+                            <label>Contact Name</label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.contactName}
+                                disabled
+                            />
+                        </div>
+
+                        {/* Contact Email */}
+                        <div className="form-group">
+                            <label>Contact Email</label>
+                            <input type="text"
+                                className="form-control"
+                                value={this.state.contactEmail}
+                                disabled
+                            />
+                        </div>
+
                         <button type="submit" className="btn btn-lg btn-dark btn-block">Create Ad</button>
                     </form>
                 </Container>
             </div>
         )
-    }    
+    }
 }

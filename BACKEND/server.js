@@ -62,7 +62,9 @@ var horseSchema = new Schema({
     discipline: String,
     image: String,
     description: { type: String, required: true },
-    price: { type: Number, required: true }
+    price: { type: Number, required: true },
+    contactName: String,
+    contactEmail: String
 });
 
 // create model for database for interaction
@@ -132,7 +134,9 @@ app.post('/addHorse', (req, res) => {
         discipline: req.body.discipline,
         image: req.body.image,
         description: req.body.description,
-        price: req.body.price
+        price: req.body.price,
+        contactName: req.body.contactName,
+        contactEmail: req.body.contactEmail
     })
 
     // server to client to prevent duplicate creation

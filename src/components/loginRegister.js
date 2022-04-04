@@ -51,12 +51,6 @@ export class LoginRegister extends React.Component {
                     // Send an alert to the user to notify successful login
                     alert("You have successfully logged in")
 
-                    // Alter the elements that change when the user is logged in
-                    document.getElementById("logoutUser").hidden = false
-                    document.getElementById("userGreeting").hidden = false
-                    document.getElementById("loginReg").hidden = true
-                    document.getElementById("account").hidden = false
-
                     // // Redirect the user to user account information page
                     window.location='/userAccount'
                     // Not sure if this is needed here
@@ -74,8 +68,6 @@ export class LoginRegister extends React.Component {
             .catch((err) => { // If there are errors
                 console.log(err);
             })
-
-
     }
 
     // When registering a new user
@@ -170,6 +162,7 @@ export class LoginRegister extends React.Component {
                                         placeholder="Enter email"
                                         value={this.state.logEmail}
                                         onChange={this.onChangeLogEmail}
+                                        required
                                     />
                                 </div>
 
@@ -181,6 +174,7 @@ export class LoginRegister extends React.Component {
                                         placeholder="Enter password"
                                         value={this.state.logPassword}
                                         onChange={this.onChangeLogPassword}
+                                        required
                                     />
                                 </div>
 
@@ -201,6 +195,7 @@ export class LoginRegister extends React.Component {
                                     placeholder="First name"
                                     value={this.state.firstName}
                                     onChange={this.onChangeFirstName}
+                                    required
                                 />
                             </div>
 
@@ -212,6 +207,7 @@ export class LoginRegister extends React.Component {
                                     placeholder="Last name"
                                     value={this.state.surname}
                                     onChange={this.onChangeSurname}
+                                    required
                                 />
                             </div>
 
@@ -223,6 +219,7 @@ export class LoginRegister extends React.Component {
                                     placeholder="Enter email"
                                     value={this.state.email}
                                     onChange={this.onChangeEmail}
+                                    required
                                 />
                             </div>
 
@@ -234,6 +231,7 @@ export class LoginRegister extends React.Component {
                                     placeholder="Enter password"
                                     value={this.state.password}
                                     onChange={this.onChangePassword}
+                                    required
                                 />
                             </div>
 

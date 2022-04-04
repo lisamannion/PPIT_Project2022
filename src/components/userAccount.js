@@ -61,8 +61,7 @@ export class UserAccount extends React.Component {
                             
                         </tr>
                     </tbody>
-                </Table>
-                
+                </Table>             
             </div>
         )
     }
