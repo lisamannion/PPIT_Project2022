@@ -81,15 +81,15 @@ app.post('/register', (req, res) => {
         } else { // If email is unique
             try {
                 // Encrypt the password for storage in database
-            const encryptedPassword = bcrypt.hashSync(req.body.password, 10)
-            
-            // If the email doesn't already exist in the database allow creation of new user
-            LoginRegModel.create({
-                firstName: req.body.firstName,
-                surname: req.body.surname,
-                email: req.body.email,
-                password: encryptedPassword
-            })
+                const encryptedPassword = bcrypt.hashSync(req.body.password, 10)
+
+                // If the email doesn't already exist in the database allow creation of new user
+                LoginRegModel.create({
+                    firstName: req.body.firstName,
+                    surname: req.body.surname,
+                    email: req.body.email,
+                    password: encryptedPassword
+                })
             } catch (error) {
                 console.log(error)
             }
@@ -154,6 +154,13 @@ app.get('/horses', (req, res) => {
 // Listen for a get request and will return horse which has the id specified after /update/:id
 app.get('/horses/:id', (req, res) => {
     HorseModel.findById(req.params.id, (err, data) => {
+        // Sending back the data
+        res.status(200).json(data)
+    })
+})
+
+app.get('/userHorses/:email', (req, res) => {
+    HorseModel.find({ contactEmail: req.params.email }, (err, data) => {
         // Sending back the data
         res.status(200).json(data)
     })

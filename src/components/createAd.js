@@ -58,7 +58,7 @@ export class CreateAd extends React.Component {
     // When registering a new user
     handleAddHorse(event) {
         // Alert the user that the form is being submitted
-        alert("Horse Name: " + this.state.adName + "\n Advert has been created");
+        alert("Horse Name: " + this.state.adName + "\nAdvert has been created");
         event.preventDefault(); // prevent crashing on reload
 
         // Create newHorse object
@@ -207,7 +207,7 @@ export class CreateAd extends React.Component {
                             <label>Gender</label>
                             <select name="gender" className="form-control"
                                  onChange={this.onChangeGender}>
-                                <option value="Colt" selected>Colt</option>
+                                <option value="Colt">Colt</option>
                                 <option value="Filly">Filly</option>
                                 <option value="Gelding">Gelding</option>
                                 <option value="Mare">Mare</option>
@@ -240,7 +240,7 @@ export class CreateAd extends React.Component {
                                 <option value="Showing">Showing</option>
                                 <option value="Showjumping">Showjumping</option>
                                 <option value="Western">Western</option>
-                                <option value="Not specified" selected>Not specified</option>
+                                <option value="Not specified">Not specified</option>
                             </select>
                         </div>
 

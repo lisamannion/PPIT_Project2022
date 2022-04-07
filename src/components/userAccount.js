@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Table from 'react-bootstrap/Table'
+import UserAdvert from './userAdvert'
 
 export class UserAccount extends React.Component {
     constructor() {
@@ -8,7 +9,8 @@ export class UserAccount extends React.Component {
         this.state = {
             userExists: false,
             token: '',
-            userDetails: []
+            userDetails: [],
+            ads: []
         }
     }
 
@@ -38,6 +40,15 @@ export class UserAccount extends React.Component {
                     // Store the verified user details in the userDetails state
                     this.setState({ userDetails: res.data.id })
                     document.getElementById("userGreeting").innerHTML = "Hello " + this.state.userDetails.firstName
+
+                    // get product information from own api
+                    axios.get('http://localhost:4000/userHorses/' + this.state.userDetails.email)
+                        .then((response) => {
+                            this.setState({ ads: response.data }) // update state
+                        }) // getting http response
+                        .catch((error) => {
+                            console.log(error);
+                        }); // if execption happens
                 })
                 .catch((err) => {
                     console.log("entered axios error")
@@ -57,11 +68,9 @@ export class UserAccount extends React.Component {
                             <td><b>Surname: </b>{this.state.userDetails.surname}</td>
                             <td><b>Email Address: </b>{this.state.userDetails.email}</td>
                         </tr>
-                        <tr>
-                            
-                        </tr>
                     </tbody>
-                </Table>             
+                </Table>
+                <UserAdvert horses={this.state.ads}></UserAdvert>
             </div>
         )
     }
