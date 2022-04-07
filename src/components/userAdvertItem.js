@@ -2,9 +2,26 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios'
 
 // create class HorseItem to show adverts
 class UserAdvertItem extends Component {
+    constructor() {
+        super();
+        // bind else will get exception
+        this.DeleteHorse = this.DeleteHorse.bind(this);
+    }
+
+    DeleteHorse() {
+
+        // delete product with specific id
+        axios.delete('http://localhost:4000/deleteHorse/' + this.props.horse._id)
+            .then(() => {
+                // reload data when product is deleted
+                this.props.ReloadData();
+            })
+            .catch();
+    }
 
     render() {
         return (
@@ -24,7 +41,7 @@ class UserAdvertItem extends Component {
                     {/* button for edit/update by changing url with id*/}
                     <Link to={"/edit/" + this.props.horse._id} className="btn btn-primary">Edit</Link>
                     {/* button for delete */}
-                    <Button variant="danger" onClick={this.DeleteProduct}>Delete</Button>
+                    <Button variant="danger" onClick={this.DeleteHorse}>Delete</Button>
                 </Card>
             </div>
         )

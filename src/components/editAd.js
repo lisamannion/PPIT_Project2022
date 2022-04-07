@@ -2,12 +2,13 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import axios from 'axios'
 
-export class CreateAd extends React.Component {
+export class EditAd extends React.Component {
 
     constructor() {
         super();
+        this.id = window.location.pathname.substring(6)
         // Bindings
-        this.handleAddHorse = this.handleAddHorse.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
         this.onChangeAdName = this.onChangeAdName.bind(this);
         this.onChangeAge = this.onChangeAge.bind(this);
         this.onChangeHeight = this.onChangeHeight.bind(this);
@@ -29,36 +30,40 @@ export class CreateAd extends React.Component {
             price: '',
             contactName: '',
             contactEmail: '',
-            token: ''
+            _id: ''
         }
     }
 
     componentDidMount() {
-        this.state.token = localStorage.getItem('token')
 
-        // Check localStorage for a token
-        if (this.state.token == null) { // Token not found - User not logged in
-            // Send an alert to the user to login before they can access the page
-            alert("You must be logged in to view this page")
-
-            // Redirect to the loginRegister page
-            window.location = '/loginRegister'
-        }
-        else {
-            axios.post('http://localhost:4000/validate', this.state)
-            .then((res) => {
-                this.setState({ contactName: res.data.id.firstName, contactEmail: res.data.id.email})
+        console.log(this.id)
+        // read from database
+        axios.get('http://localhost:4000/horses/' + this.id)
+            .then(response => {
+                this.setState({
+                    _id: response.data._id,
+                    adName: response.data.adName,
+                    age: response.data.age,
+                    height: response.data.height,
+                    gender: response.data.gender,
+                    breed: response.data.breed,
+                    discipline: response.data.discipline,
+                    image: response.data.image,
+                    description: response.data.description,
+                    price: response.data.price,
+                    contactName: response.data.contactName,
+                    contactEmail: response.data.contactEmail
+                })
             })
-            .catch((err) => {
-                console.log("entered axios error")
-                console.log(err)
+            .catch((error) => {
+                console.log(error)
             })
-        }
     }
+
     // When registering a new user
-    handleAddHorse(event) {
+    handleEdit(event) {
         // Alert the user that the form is being submitted
-        alert("Horse Name: " + this.state.adName + "\nAdvert has been created");
+        alert("Horse Name: " + this.state.adName + "\nAdvert has been edited");
         event.preventDefault(); // prevent crashing on reload
 
         // Create newHorse object
@@ -73,31 +78,19 @@ export class CreateAd extends React.Component {
             description: this.state.description,
             price: this.state.price,
             contactName: this.state.contactName,
-            contactEmail: this.state.contactEmail
+            contactEmail: this.state.contactEmail,
+            _id: this.state._id
         }
 
         // Sending post request to the server
-        axios.post('http://localhost:4000/addHorse', newHorse) // send newUser object to server
+        axios.put('http://localhost:4000/editHorse/' + this.state._id, newHorse) // send newUser object to server
             .then((res) => {
                 console.log(res); // response to console
-                window.location = '/userAccount'
+                window.location='/userAccount'
             })
             .catch((err) => {
                 console.log(err); // error to console
             });
-
-        // set state to empty for the next user
-        this.setState({
-            adName: '',
-            age: '',
-            height: '',
-            gender: '',
-            breed: '',
-            discipline: '',
-            image: '',
-            description: '',
-            price: ''
-        })
     }
 
     // will set name value in state when input changed
@@ -167,8 +160,8 @@ export class CreateAd extends React.Component {
             <div>
                 <Container>
                     {/* create add horse form */}
-                    <form onSubmit={this.handleAddHorse}>
-                        <h3>Advertise your horse!</h3>
+                    <form onSubmit={this.handleEdit}>
+                        <h3>Edit your horse!</h3>
 
                         {/* input horse name */}
                         <div className="form-group">
@@ -298,7 +291,7 @@ export class CreateAd extends React.Component {
                             />
                         </div>
 
-                        <button type="submit" className="btn btn-lg btn-dark btn-block">Create Ad</button>
+                        <button type="submit" className="btn btn-lg btn-dark btn-block">Edit Ad</button>
                     </form>
                 </Container>
             </div>

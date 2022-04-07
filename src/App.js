@@ -7,6 +7,7 @@ import { CreateAd } from './components/createAd'
 import { LoginRegister } from './components/loginRegister'
 import { ViewAd } from './components/viewAd'
 import { UserAccount } from './components/userAccount'
+import { EditAd } from './components/editAd'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar, Nav, NavDropdown, Row } from 'react-bootstrap'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -87,6 +88,7 @@ class App extends Component {
             {/* Setting up the view horse route (to view details of specific advert) with id parameter */}
             <Route path='/horses/:id' element={< ViewAd />} />
             <Route path='/userAccount' element={< UserAccount />} />
+            <Route path='/edit/:id' element={< EditAd />} />
           </Routes>
         </div>
 

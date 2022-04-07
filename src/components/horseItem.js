@@ -22,7 +22,7 @@ class HorseItem extends Component {
                             </footer>
                         </blockquote>
                     </Card.Body>
-                    {/* button for edit/update by changing url with id*/}
+                    {/* button to details of horse by changing url with specific id*/}
                     <Link to={"/horses/" + this.props.horse._id} className="btn btn-primary">Details</Link>
                 </Card>
             </div>

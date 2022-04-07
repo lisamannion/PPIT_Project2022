@@ -177,6 +177,30 @@ app.post('/validate', (req, res) => {
     }
 })
 
+// update horse with specific id
+app.put('/editHorse/:id', (req, res) => {
+
+    // find product with that id and update from database
+    HorseModel.findByIdAndUpdate(req.params.id, req.body, { new: true },
+        (err, data) => {
+            res.send(data)
+        })
+})
+
+// listen from http (/api/products/:id) that has delete method
+app.delete('/deleteHorse/:id', (req, res) => {
+
+    // delete record with that specific id (id associated with delete button)
+    HorseModel.deleteOne({ _id: req.params.id },
+        (error, data) => {
+            if (error) {
+                res.send(error);
+            } else {
+                res.send(data);
+            }
+        })
+})
+
 // Server app listening on port 4000
 app.listen(port, () => {
     console.log('Listening at http://localhost:4000')

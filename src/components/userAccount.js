@@ -6,12 +6,25 @@ import UserAdvert from './userAdvert'
 export class UserAccount extends React.Component {
     constructor() {
         super()
+        this.ReloadData = this.ReloadData.bind(this)
         this.state = {
             userExists: false,
             token: '',
             userDetails: [],
             ads: []
         }
+    }
+
+    // reload when product deleted
+    ReloadData() {
+        // get product information from own api
+        axios.get('http://localhost:4000/userHorses/' + this.state.userDetails.email)
+            .then((response) => {
+                this.setState({ ads: response.data }) // update state
+            }) // getting http response
+            .catch((error) => {
+                console.log(error);
+            }); // if execption happens
     }
 
     componentDidMount() {
@@ -70,7 +83,7 @@ export class UserAccount extends React.Component {
                         </tr>
                     </tbody>
                 </Table>
-                <UserAdvert horses={this.state.ads}></UserAdvert>
+                <UserAdvert horses={this.state.ads} ReloadData={this.ReloadData}></UserAdvert>
             </div>
         )
     }
