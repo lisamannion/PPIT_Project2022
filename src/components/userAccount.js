@@ -73,9 +73,10 @@ export class UserAccount extends React.Component {
     render() {
         return (
             <div className='userInfo-container'>
-                <h1>User Account information for {this.state.userDetails.firstName}</h1>
+                <h1>Account information and Active Ads for {this.state.userDetails.firstName}</h1>
                 <Table className='userInfo' border='1'>
                     <tbody>
+                        <th colSpan={3}>User information</th>
                         <tr>
                             <td><b>First Name: </b>{this.state.userDetails.firstName}</td>
                             <td><b>Surname: </b>{this.state.userDetails.surname}</td>
@@ -83,7 +84,9 @@ export class UserAccount extends React.Component {
                         </tr>
                     </tbody>
                 </Table>
-                <UserAdvert horses={this.state.ads} ReloadData={this.ReloadData}></UserAdvert>
+                <div className='cards-grid'>
+                    <UserAdvert horses={this.state.ads} ReloadData={this.ReloadData}></UserAdvert>
+                </div>
             </div>
         )
     }

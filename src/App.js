@@ -22,7 +22,7 @@ class App extends Component {
 
   constructor() {
     super()
-    this.state = {token: ''}
+    this.state = { token: '' }
   }
 
   logout() {
@@ -34,7 +34,7 @@ class App extends Component {
       document.getElementById("account").hidden = false
 
       // Redirect to the home page
-      window.location='/loginRegister'
+      window.location = '/loginRegister'
     }
   }
 
@@ -46,13 +46,13 @@ class App extends Component {
       document.getElementById("account").hidden = false
       document.getElementById("loginReg").hidden = true
       axios.post('http://localhost:4000/validate', this.state)
-      .then((res) => {
-        document.getElementById("userGreeting").innerHTML = "Hello " + res.data.id.firstName
-      })
-      .catch((err) => {
+        .then((res) => {
+          document.getElementById("userGreeting").innerHTML = "Hello " + res.data.id.firstName
+        })
+        .catch((err) => {
           console.log("entered axios error")
           console.log(err)
-      })
+        })
     }
   }
 

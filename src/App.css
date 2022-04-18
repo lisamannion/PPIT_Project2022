@@ -32,13 +32,14 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
 .carousel-caption {
-  background-color: rgba(0,0,0,0.4) !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
 }
 
 .carousel-pic {
@@ -80,7 +81,7 @@
 
 .footer-links:hover {
   text-decoration: none;
-  color:rgba(97,108,254);
+  color: rgba(97, 108, 254);
 }
 
 .footer-icons {
@@ -101,4 +102,17 @@
 
 .instagram {
   color: black;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}
+
+.card {
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
+  padding: .5rem;
 }
