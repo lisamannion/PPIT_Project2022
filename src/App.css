@@ -116,3 +116,32 @@
   border-radius: 4px;
   padding: .5rem;
 }
+
+.about-inner img {
+  width: 100%;
+  height: 800px;
+}
+
+.about-caption {
+  width: 100%;
+  height: 800px;
+  position: absolute;
+  top: 73px;
+  z-index: 0;
+  color: white;
+  background-color: rgba(0,0,0,0.4);
+  padding: 100px;
+}
+
+.about-caption h1 {
+  font-size: 3.8rem;
+  font-weight: 700;
+  text-shadow: .1rem .1rem .8rem black;
+  padding-bottom: 3rem;
+}
+
+.about-caption h2 {
+  font-size: 1.5rem;
+  text-shadow: .1rem .1rem .5rem black;
+  padding: 0 100px;
+}
