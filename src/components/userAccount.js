@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Table from 'react-bootstrap/Table'
 import UserAdvert from './userAdvert'
+import { Link } from 'react-router-dom';
 
 export class UserAccount extends React.Component {
     constructor() {
@@ -84,11 +85,17 @@ export class UserAccount extends React.Component {
                         </tr>
                     </tbody>
                 </Table>
-                <h2>Active Ads</h2>
-                <div className='cards-grid'>
-                    <UserAdvert horses={this.state.ads} ReloadData={this.ReloadData}></UserAdvert>
+                <div className="ads">
+                    <h2>Active Ads</h2>
+                    <div className='cards-grid'>
+                        <UserAdvert horses={this.state.ads} ReloadData={this.ReloadData}></UserAdvert>
+                    </div>
+                    <div className="create-ads">
+                        {/* button for create an ad*/}
+                        <Link to={"/createAd"} className="btn btn-primary create-ads-btn">Click Here to create an ad!</Link>
+                    </div>
                 </div>
-            </div>
+            </div>   
         )
     }
 }

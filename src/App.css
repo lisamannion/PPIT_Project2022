@@ -181,3 +181,12 @@
 .userInfo-container p{
   font-size: medium;
 }
+
+.create-ads {
+  height: 300px;
+  justify-content: center;
+}
+
+.create-ads-btn {
+  margin-top: 100px;
+}

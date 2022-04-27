@@ -72,7 +72,7 @@ class App extends Component {
               </NavDropdown>
               <Nav.Link href="/aboutUs">About Us</Nav.Link>
               <Nav.Link id="loginReg" href="/loginRegister">Login/Register</Nav.Link>
-              <Nav.Link id="userGreeting" hidden></Nav.Link>
+              <Nav.Link id="userGreeting" hidden href="/userAccount" style={{color: "white"}}></Nav.Link>
               <Nav.Link id="account" hidden href="/userAccount">Manage Account</Nav.Link>
               <Nav.Link id="logoutUser" hidden onClick={this.logout}>Logout</Nav.Link>
             </Nav>
@@ -118,7 +118,7 @@ class App extends Component {
                 <div>
                   <p>
                     <i className="fa fa-envelope"></i>
-                    <a href="mailto:support@horse.com" className="footer-links" target="_blank"> support@horse.com</a>
+                    <a href="mailto:support@horse.com" className="footer-links" target="_blank"> support@manedealr.com</a>
                   </p>
                 </div>
               </div>
