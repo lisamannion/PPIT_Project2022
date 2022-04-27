@@ -9,16 +9,16 @@ export class Home extends React.Component {
                 <Carousel.Item>
                     <img className="d-block w-100 carousel-pic" src="/category.jpg" alt="First slide" />
                     <Carousel.Caption>
-                        <h3>Been wanting to own a horse?</h3>
-                        <p>Take a look at the horses we have!</p>
+                        <h3>Been looking for your next horse?</h3>
+                        <p>Take a look at our listings!</p>
                         <p><a className="btn btn-large btn-outline-light" href="/listings">Click Here</a></p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img className="d-block w-100 carousel-pic" src="/discipline.jpg" alt="Second slide" />
                     <Carousel.Caption>
-                        <h3>Wish to advertise your horse(s)?</h3>
-                        <p>Create an ad for your horse!</p>
+                        <h3>Want to advertise your horse?</h3>
+                        <p>Advertise with us!</p>
                         <p><a className="btn btn-large btn-outline-light" href="/createAd">Create Now</a></p>
                     </Carousel.Caption>
                 </Carousel.Item>

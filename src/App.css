@@ -43,7 +43,8 @@
 }
 
 .carousel-pic {
-  max-height: 700px;
+  max-width: 55%;
+  margin: auto;
 }
 
 .login-container {

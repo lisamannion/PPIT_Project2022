@@ -50,7 +50,7 @@ export class Listings extends React.Component {
             <div>
                 {/* Message */}
                 <div className="form-group">
-                    <h2 className="header">Horse(s) in database</h2>
+                    <h2 className="header">Welcome to our Listings page!</h2>
                     {/* create dropdownmenu for filtering */}
                     <select onChange={this.filterData}>
                         <option value="All">Filter By Gender or Discipline</option>
