@@ -26,28 +26,39 @@ export class ViewAd extends React.Component {
 
     // lifecycle method
     componentDidMount() {
-        console.log(this.id)
-        // Get information from the server
-        axios.get('http://localhost:4000/horses/' + this.id)
-            .then((response) => {
-                this.setState({ // Set the state of the update fields to the state of the document which came back from database
-                    _id: response.data._id,
-                    adName: response.data.adName,
-                    age: response.data.age,
-                    height: response.data.height,
-                    gender: response.data.gender,
-                    breed: response.data.breed,
-                    discipline: response.data.discipline,
-                    image: response.data.image,
-                    description: response.data.description,
-                    price: response.data.price,
-                    contactName: response.data.contactName,
-                    contactEmail: response.data.contactEmail
-                })
-            }) // getting http response
-            .catch((error) => {
-                console.log(error);
-            }); // if execption happens
+        this.state.token = localStorage.getItem('token')
+
+        // Check localStorage for a token
+        if (this.state.token == null) { // Token not found - User not logged in
+            // Send an alert to the user to login before they can access the page
+            alert("You must be logged in to view this page")
+
+            // Redirect to the loginRegister page
+            window.location = '/loginRegister'
+        }
+        else {
+            // Get information from the server
+            axios.get('http://localhost:4000/horses/' + this.id)
+                .then((response) => {
+                    this.setState({ // Set the state of the update fields to the state of the document which came back from database
+                        _id: response.data._id,
+                        adName: response.data.adName,
+                        age: response.data.age,
+                        height: response.data.height,
+                        gender: response.data.gender,
+                        breed: response.data.breed,
+                        discipline: response.data.discipline,
+                        image: response.data.image,
+                        description: response.data.description,
+                        price: response.data.price,
+                        contactName: response.data.contactName,
+                        contactEmail: response.data.contactEmail
+                    })
+                }) // getting http response
+                .catch((error) => {
+                    console.log(error);
+                }); // if execption happens
+        }
     }
 
     render() {

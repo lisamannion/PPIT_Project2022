@@ -102,7 +102,7 @@ class App extends Component {
                   <a href="/listings" className="footer-links"> Listings </a>|
                   <a href="/aboutUs" className="footer-links"> About Us </a>
                 </p>
-                <p className="footer-company-name">Horse © 2022</p>
+                <p className="footer-company-name">ManeDealR © 2022</p>
               </div>
 
               <div className="footer-center col-md-4">

@@ -74,16 +74,17 @@ export class UserAccount extends React.Component {
         return (
             <div className='userInfo-container'>
                 <h1>Account information and Active Ads for {this.state.userDetails.firstName}</h1>
-                <Table className='userInfo' border='1'>
+                <h2>User Information</h2>
+                <Table className='userInfo'>
                     <tbody>
-                        <th colSpan={3}>User information</th>
                         <tr>
-                            <td><b>First Name: </b>{this.state.userDetails.firstName}</td>
-                            <td><b>Surname: </b>{this.state.userDetails.surname}</td>
-                            <td><b>Email Address: </b>{this.state.userDetails.email}</td>
+                            <td><p><b>First Name: </b>{this.state.userDetails.firstName}</p></td>
+                            <td><p><b>Surname: </b>{this.state.userDetails.surname}</p></td>
+                            <td><p><b>Email Address: </b>{this.state.userDetails.email}</p></td>
                         </tr>
                     </tbody>
                 </Table>
+                <h2>Active Ads</h2>
                 <div className='cards-grid'>
                     <UserAdvert horses={this.state.ads} ReloadData={this.ReloadData}></UserAdvert>
                 </div>

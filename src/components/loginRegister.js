@@ -231,6 +231,7 @@ export class LoginRegister extends React.Component {
                                     placeholder="Enter password"
                                     value={this.state.password}
                                     onChange={this.onChangePassword}
+                                    minLength="8"
                                     required
                                 />
                             </div>

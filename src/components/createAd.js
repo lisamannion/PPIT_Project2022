@@ -164,7 +164,7 @@ export class CreateAd extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="createAd">
                 <Container>
                     {/* create add horse form */}
                     <form onSubmit={this.handleAddHorse}>

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #e7e7e7;
 }
 
 .App-logo {
@@ -47,7 +48,7 @@
 }
 
 .login-container {
-  margin: 2%;
+  padding: 2%;
   text-align: justify !important;
 }
 
@@ -115,6 +116,18 @@
   border: 2px solid #e7e7e7;
   border-radius: 4px;
   padding: .5rem;
+  background-color: #e7e7e7;
+}
+
+.cardListings {
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
+  padding: .5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 55rem;
+  background-color: #e7e7e7;
 }
 
 .about-inner img {
@@ -140,8 +153,29 @@
   padding-bottom: 3rem;
 }
 
-.about-caption h2 {
-  font-size: 1.5rem;
+.about-caption h3 {
   text-shadow: .1rem .1rem .5rem black;
   padding: 0 100px;
+}
+
+.header {
+  margin: 0;
+  padding: 10px;
+}
+
+.createAd {
+  padding: 10px;
+}
+
+.userInfo-container h1{
+  margin-top: 10px;
+}
+
+.userInfo-container h2{
+  display: flex;
+  margin-left: 20px;
+}
+
+.userInfo-container p{
+  font-size: medium;
 }
