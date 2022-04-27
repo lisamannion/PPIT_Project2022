@@ -1,11 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import Table from 'react-bootstrap/Table'
+import { Link } from 'react-router-dom'
 
 export class ViewAd extends React.Component {
     // ViewAd constructor
     constructor() {
         super()
+        // Takes the id out of the url
         this.id = window.location.pathname.substring(8)
 
         this.state = {
@@ -93,6 +95,7 @@ export class ViewAd extends React.Component {
                             </tr>
                         </tbody>
                     </Table>
+                    <Link to={'/listings'} className="btn btn-primary" style={{margin: 10}}>Back to listings</Link>
                 </div>
             </div>
         )
