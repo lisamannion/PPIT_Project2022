@@ -8,9 +8,9 @@ class HorseItem extends Component {
     render() {
         return (
             // get every element and put into card using bootstrap
-            <div className="card">
+            <div className="cardListings">
                 {/* set border, backgound colour and width */}
-                <Card border="secondary" bg="light" style={{ height: '30rem' }}>
+                <Card border="secondary" bg="light" style={{ height: '30rem', width: '50rem' }}>
                     <Card.Header><b>{this.props.horse.adName}</b></Card.Header>
                     <Card.Body>
                         <blockquote>
