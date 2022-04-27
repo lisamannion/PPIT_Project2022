@@ -13,7 +13,6 @@ class UserAdvertItem extends Component {
     }
 
     DeleteHorse() {
-
         // delete product with specific id
         axios.delete('http://localhost:4000/deleteHorse/' + this.props.horse._id)
             .then(() => {
@@ -36,7 +35,7 @@ class UserAdvertItem extends Component {
                             
                         </blockquote>
                         <footer>
-                                Name: {this.props.horse.adName}
+                                Discipline: {this.props.horse.discipline}
                         </footer>
                     </Card.Body>
                     {/* button for edit/update by changing url with id*/}

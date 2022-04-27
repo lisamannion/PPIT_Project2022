@@ -2,24 +2,26 @@ import React from 'react'
 import Horses from './horses';
 import axios from 'axios';
 
+// Listings Component for display of multiple ads - Mapped to Horses, mapped to HorseItem
+// Each horse returned by request gets mapped to horse item and is displayed on this component
 export class Listings extends React.Component {
 
     // lifecycle method
     componentDidMount() {
-        // get product information from own api
+        // Request to the server
         axios.get('http://localhost:4000/horses')
-            .then((response) => {
+            .then((response) => { // If successful - Set state to response
                 this.setState({ horses: response.data, filterData: response.data }) // update state
-            }) // getting http response
-            .catch((error) => {
+            }) 
+            .catch((error) => { // If error
                 console.log(error);
-            }); // if execption happens
+            })
     }
 
     state = {
         horses: [],
         filterData: []
-    };
+    }
 
     // filterdata using horses state and update filterData state after filtering
     filterData = (e) => {
@@ -62,10 +64,12 @@ export class Listings extends React.Component {
                         <option value="Stallion">Stallion</option>
                         <option disabled>─────Discipline─────</option>
                         <option value="All Rounder">All Rounder</option>
+                        <option value="Breeding">Breeding</option>
                         <option value="Cross Country">Cross Country</option>
                         <option value="Dressage">Dressage</option>
                         <option value="Eventing">Eventing</option>
                         <option value="Hunter">Hunter</option>
+                        <option value="Racing">Racing</option>
                         <option value="School Master">School Master</option>
                         <option value="Showing">Showing</option>
                         <option value="Showjumping">Showjumping</option>

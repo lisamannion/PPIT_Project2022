@@ -35,9 +35,7 @@ export class EditAd extends React.Component {
     }
 
     componentDidMount() {
-
-        console.log(this.id)
-        // read from database
+        // Axios request to retrieve data from database
         axios.get('http://localhost:4000/horses/' + this.id)
             .then(response => {
                 this.setState({
@@ -66,8 +64,8 @@ export class EditAd extends React.Component {
         alert("Horse Name: " + this.state.adName + "\nAdvert has been edited");
         event.preventDefault(); // prevent crashing on reload
 
-        // Create newHorse object
-        const newHorse = {
+        // Create updateHorse object for sending info to server
+        const updateHorse = {
             adName: this.state.adName,
             age: this.state.age,
             height: this.state.height,
@@ -82,10 +80,9 @@ export class EditAd extends React.Component {
             _id: this.state._id
         }
 
-        // Sending post request to the server
-        axios.put('http://localhost:4000/editHorse/' + this.state._id, newHorse) // send newUser object to server
-            .then((res) => {
-                console.log(res); // response to console
+        // Sending put request to the server to update details
+        axios.put('http://localhost:4000/editHorse/' + this.state._id, updateHorse) // send updated object to server
+            .then((res) => { // Change to updated user account page
                 window.location='/userAccount'
             })
             .catch((err) => {
@@ -142,6 +139,7 @@ export class EditAd extends React.Component {
         })
     }
 
+    // Change the description element of state to match what the user submitted
     onChangeDescription(event) {
         this.setState({
             description: event.target.value
@@ -291,7 +289,7 @@ export class EditAd extends React.Component {
                             />
                         </div>
 
-                        <button type="submit" className="btn btn-lg btn-dark btn-block">Edit Ad</button>
+                        <button type="submit" className="btn btn-lg btn-dark btn-block">Update Ad</button>
                     </form>
                 </Container>
             </div>

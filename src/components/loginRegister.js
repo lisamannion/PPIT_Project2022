@@ -2,18 +2,20 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import axios from 'axios'
 
+// LoginRegister Component
 export class LoginRegister extends React.Component {
+    // Constructor
     constructor() {
-        super();
+        super()
         // Bindings
-        this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
-        this.onChangeLogEmail = this.onChangeLogEmail.bind(this);
-        this.onChangeLogPassword = this.onChangeLogPassword.bind(this);
-        this.handleRegSubmit = this.handleRegSubmit.bind(this);
-        this.onChangeFirstName = this.onChangeFirstName.bind(this);
-        this.onChangeSurname = this.onChangeSurname.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
+        this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
+        this.onChangeLogEmail = this.onChangeLogEmail.bind(this)
+        this.onChangeLogPassword = this.onChangeLogPassword.bind(this)
+        this.handleRegSubmit = this.handleRegSubmit.bind(this)
+        this.onChangeFirstName = this.onChangeFirstName.bind(this)
+        this.onChangeSurname = this.onChangeSurname.bind(this)
+        this.onChangeEmail = this.onChangeEmail.bind(this)
+        this.onChangePassword = this.onChangePassword.bind(this)
         this.state = {
             logEmail: '',
             logPassword: '',
@@ -29,7 +31,7 @@ export class LoginRegister extends React.Component {
     handleLoginSubmit(event) {
         event.preventDefault(); // prevent crashing on reload 
 
-        // Defining a new user object
+        // Defining user object
         const user = {
             logEmail: this.state.logEmail,
             logPassword: this.state.logPassword
@@ -53,14 +55,6 @@ export class LoginRegister extends React.Component {
 
                     // // Redirect the user to user account information page
                     window.location='/userAccount'
-                    // Not sure if this is needed here
-                    // axios.post('http://localhost:4000/userAccount')
-                    //     .then((res) => { // If token valid, user is redirected to the user page
-                            
-                    //     })
-                    //     .catch((err) => {
-                    //         console.log(err)
-                    //     })
                 } else {
                     document.getElementById('loginError').hidden = false
                 }          
@@ -72,8 +66,6 @@ export class LoginRegister extends React.Component {
 
     // When registering a new user
     handleRegSubmit(event) {
-        // Alert the user that the form is being submitted
-        alert("First Name: " + this.state.firstName + "\nSurname: " + this.state.surname + "\nEmail: " + this.state.email + "\nPassword: " + this.state.password);
         event.preventDefault(); // prevent crashing on reload
 
         // Create newUser object
@@ -87,7 +79,13 @@ export class LoginRegister extends React.Component {
         // Sending post request to the server
         axios.post('http://localhost:4000/register', newUser) // send newUser object to server
             .then((res) => {
-                console.log(res); // response to console
+                if(res.data === "User already exist") {
+                    document.getElementById('regError').hidden = false
+                } else {
+                    // Alert the user that the form is being submitted
+                    alert("NEW ACCOUNT CREATED")
+                }
+                 
             })
             .catch((err) => {
                 console.log(err); // error to console
@@ -153,7 +151,7 @@ export class LoginRegister extends React.Component {
                             {/* create login form */}
                             <form onSubmit={this.handleLoginSubmit}>
                                 <h3>Login</h3>
-                                    <h6 id='loginError' hidden={true}>Please check login details and try again</h6>
+                                    <h6 id='loginError' hidden={true} style={{color: 'red'}}>Please check login details and try again</h6>
                                 {/* input login email */}
                                 <div className="form-group">
                                     <label>Email</label>
@@ -186,7 +184,7 @@ export class LoginRegister extends React.Component {
                         {/* create register form */}
                         <form onSubmit={this.handleRegSubmit}>
                             <h3>Register</h3>
-
+                            <h6 id='regError' hidden={true} style={{color: 'red'}}>The provided mail already exists. Please provide a different one!</h6>
                             {/* input first name */}
                             <div className="form-group">
                                 <label>First name</label>

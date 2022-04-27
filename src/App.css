@@ -44,6 +44,7 @@
 }
 
 .carousel-pic {
+  max-height: 550px;
   max-width: 55%;
   margin: auto;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HorseItem from './horseItem';
 
-// create class Products with individual products listed
+// Horses maps each horse returned from results to a HorseItem
 class Horses extends Component {
     render() {
         // get products and map to individual element (product)

@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
-// create class HorseItem to show adverts
+// HorseItem Component outlines how an individual horse is to be displayed as an advert
 class HorseItem extends Component {
-
     render() {
         return (
-            // get every element and put into card using bootstrap
+            // Take each element and put into card using bootstrap
             <div className="cardListings">
                 {/* set border, backgound colour and width */}
                 <Card border="secondary" bg="light" style={{ height: '30rem', width: '50rem' }}>

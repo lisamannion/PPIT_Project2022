@@ -1,5 +1,6 @@
 import React from 'react'
 
+// AboutUs Component - static
 export class AboutUs extends React.Component {
     render() {
         return (

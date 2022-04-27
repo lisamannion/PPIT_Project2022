@@ -77,7 +77,7 @@ app.post('/register', (req, res) => {
     LoginRegModel.findOne({ email: req.body.email }, (err, data) => {
         // If email has been found in the database, the user already exists
         if (data) {
-            res.send("User already exist");
+            res.send("User already exist")
         } else { // If email is unique
             try {
                 // Encrypt the password for storage in database

@@ -2,21 +2,22 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import axios from 'axios'
 
+// CreateAd Component
 export class CreateAd extends React.Component {
-
+    // Constructor
     constructor() {
-        super();
+        super()
         // Bindings
-        this.handleAddHorse = this.handleAddHorse.bind(this);
-        this.onChangeAdName = this.onChangeAdName.bind(this);
-        this.onChangeAge = this.onChangeAge.bind(this);
-        this.onChangeHeight = this.onChangeHeight.bind(this);
-        this.onChangeGender = this.onChangeGender.bind(this);
-        this.onChangeBreed = this.onChangeBreed.bind(this);
-        this.onChangeDiscipline = this.onChangeDiscipline.bind(this);
-        this.onChangeImage = this.onChangeImage.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangePrice = this.onChangePrice.bind(this);
+        this.handleAddHorse = this.handleAddHorse.bind(this)
+        this.onChangeAdName = this.onChangeAdName.bind(this)
+        this.onChangeAge = this.onChangeAge.bind(this)
+        this.onChangeHeight = this.onChangeHeight.bind(this)
+        this.onChangeGender = this.onChangeGender.bind(this)
+        this.onChangeBreed = this.onChangeBreed.bind(this)
+        this.onChangeDiscipline = this.onChangeDiscipline.bind(this)
+        this.onChangeImage = this.onChangeImage.bind(this)
+        this.onChangeDescription = this.onChangeDescription.bind(this)
+        this.onChangePrice = this.onChangePrice.bind(this)
         this.state = {
             adName: '',
             age: '',
@@ -46,11 +47,10 @@ export class CreateAd extends React.Component {
         }
         else {
             axios.post('http://localhost:4000/validate', this.state)
-            .then((res) => {
+            .then((res) => { // If successful set the state as follows
                 this.setState({ contactName: res.data.id.firstName, contactEmail: res.data.id.email})
             })
-            .catch((err) => {
-                console.log("entered axios error")
+            .catch((err) => { // If an error occurred
                 console.log(err)
             })
         }
@@ -79,7 +79,7 @@ export class CreateAd extends React.Component {
         // Sending post request to the server
         axios.post('http://localhost:4000/addHorse', newHorse) // send newUser object to server
             .then((res) => {
-                console.log(res); // response to console
+                // Change to userAccount component
                 window.location = '/userAccount'
             })
             .catch((err) => {
@@ -170,7 +170,7 @@ export class CreateAd extends React.Component {
                     <form onSubmit={this.handleAddHorse}>
                         <h3>Advertise your horse!</h3>
 
-                        {/* input horse name */}
+                        {/* Input ad title */}
                         <div className="form-group">
                             <label>Title of Ad</label>
                             <input type="text"
@@ -233,10 +233,12 @@ export class CreateAd extends React.Component {
                             <select name="discipline" className="form-control"
                                  onChange={this.onChangeDiscipline}>
                                 <option value="All Rounder">All Rounder</option>
+                                <option value="Breeding">Breeding</option>
                                 <option value="Cross Country">Cross Country</option>
                                 <option value="Dressage">Dressage</option>
                                 <option value="Eventing">Eventing</option>
                                 <option value="Hunter">Hunter</option>
+                                <option value="Racing">Racing</option>
                                 <option value="School Master">School Master</option>
                                 <option value="Showing">Showing</option>
                                 <option value="Showjumping">Showjumping</option>
