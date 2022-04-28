@@ -7,7 +7,9 @@ is built using MERN stack which is a full stack implementation in MongoDB, Expre
 
 ## Clone the Project and Install Prerequisites 
 
-*Note: You will need `node` and `npm` installed on your machine
+*Note: You will need `node` and `npm` installed on your machine.
+- [Node](https://nodejs.org/en/download/)
+- [npm](https://nodejs.org/en/download/package-manager/)
 
 ```terminal
 $ git clone https://github.com/lisamannion/PPIT_Project2022
@@ -30,5 +32,5 @@ $ npm start
 ```
 
 # Author
-[Lisa Mannion](https://github.com/lisamannion)
+[Lisa Mannion](https://github.com/lisamannion),
 [Gabriel Hang](https://github.com/gabhang)
