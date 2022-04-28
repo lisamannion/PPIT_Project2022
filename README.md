@@ -3,7 +3,7 @@
 ManeDealR is a horse advertising website that enables user to browse horse advertisements and/or to create their own advertisement. The site is aimed at anyone in the horse world who wishes to promote, buy, or sell their horse. The website
 is built using MERN stack which is a full stack implementation in MongoDB, Express.JS, React.JS and Node.JS.
 
-# Installation and Setup Instrutions
+# Installation and Setup Instructions
 
 ## Clone the Project and Install Prerequisites 
 
